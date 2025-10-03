@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>SimpList - Simple To-Do List</title>
+  <title>SimpList</title>
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" />
   <style>
@@ -129,7 +129,6 @@
     }
     .card-content { padding: 0 12px; }
     .task-list {
-	  width: 100%;
       list-style: none;
       padding: 0;
       margin: 0 0 8px 0;
@@ -186,7 +185,6 @@
 }
 
 .task-list label.task-done {
-  margin-right: 100%;
 }
 
 
@@ -232,7 +230,7 @@
       border-radius: 3px;
       box-shadow: 0 4px 32px rgba(0, 0, 0, 0.19);
       padding: 22px 18px 16px 18px;
-      min-width: 320px;
+      min-width: 400px;
       max-width: 96vw;
       max-height: 90vh;
       overflow-y: auto;
@@ -262,7 +260,7 @@
       display: block;
     }
     .modal textarea {
-      width: 100%;
+      width: 90%;
       font-family: inherit;
       font-size: 1em;
       padding: 10px;
@@ -389,6 +387,10 @@
   cursor: pointer;
 }
 
+.about-modal {
+  text-align: center;
+}
+
 
   </style>
 </head>
@@ -406,6 +408,9 @@ upload
     <input id="file-upload-input" type="file" accept="application/json" style="display:none">
     <span class="spacer"></span>
     <span style="font-size:1.2em;">SimpList</span>
+	<button class="icon-btn" id="about-btn" title="About SimpList">
+  <span class="material-symbols-outlined">info</span>
+</button>
   </div>
   <div class="container">
     <div class="card-list" id="card-list"></div>
@@ -508,6 +513,59 @@ upload
 function renderCards() {
   const cardList = document.querySelector('.card-list');
 
+  // About Modal
+document.getElementById('about-btn').onclick = () => {
+  const modalRoot = document.getElementById('modal-root');
+  modalRoot.innerHTML = '';
+
+  const overlay = document.createElement('div');
+  overlay.className = 'modal-overlay';
+
+  const modal = document.createElement('div');
+  modal.className = 'modal about-modal';
+
+  const closeBtn = document.createElement('button');
+  closeBtn.className = 'close-btn';
+  closeBtn.innerHTML = '&times;';
+  closeBtn.onclick = () => modalRoot.innerHTML = '';
+
+  const heading = document.createElement('h3');
+  heading.textContent = 'SimpList version 25.10.3.1';
+
+  const paragraph1 = document.createElement('p');
+  paragraph1.textContent = 'SimpList is a lightweight task and project manager designed for simplicity.';
+
+  const paragraph2 = document.createElement('p');
+  paragraph2.textContent = 'Created and Maintained by Joshua Reeve';
+
+  const techIcons = document.createElement('p');
+  techIcons.innerHTML = `
+    <span class="material-symbols-outlined">javascript</span>   
+    <span class="material-symbols-outlined">html</span>   
+    <span class="material-symbols-outlined">css</span>
+  `;
+
+  const githubLink = document.createElement('p');
+  githubLink.innerHTML = `
+    <a href="https://github.com/joshua-reeve/SimpList"><span class="material-symbols-outlined" style="vertical-align: middle">link</span>View on GitHub</a>
+  `;
+
+  modal.appendChild(closeBtn);
+  modal.appendChild(heading);
+  modal.appendChild(paragraph1);
+  modal.appendChild(paragraph2);
+  modal.appendChild(techIcons);
+  modal.appendChild(githubLink);
+  overlay.appendChild(modal);
+  modalRoot.appendChild(overlay);
+
+  // Close modal when clicking outside of it
+  overlay.addEventListener('click', (e) => {
+    if (e.target === overlay) {
+      modalRoot.innerHTML = '';
+    }
+  });
+};
 
 
   // --- Clear and Re-render Cards ---
@@ -839,7 +897,7 @@ li.appendChild(cb);
 	  if (hasSubtasks) {
   const subtaskIcon = document.createElement('span');
   subtaskIcon.className = 'material-symbols-outlined subtask-indicator';
-  subtaskIcon.textContent = hasIncompleteSubtasks ? 'assignment' : 'assignment_turned_in';
+  subtaskIcon.textContent = hasIncompleteSubtasks ? 'assignment_late' : 'assignment_turned_in';
   subtaskIcon.title = hasIncompleteSubtasks ? 'Incomplete subtasks' : 'All subtasks complete';
   subtaskIcon.style.color = hasIncompleteSubtasks ? '#D50000' : '#4caf50'
   subtaskIcon.style.fontSize = '24px';
