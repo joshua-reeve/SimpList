@@ -48,6 +48,9 @@
 
     /* --- Custom Button / Clipboard Manager Styles --- */
     #custom-buttons-section {
+      margin-top: 40px; 
+      border-top: 1px solid #ddd; 
+      padding-top: 20px;
       animation: fadeIn 0.4s ease;
     }
     
@@ -84,12 +87,10 @@
     }
     
     /* Dragging Visuals */
-    .folder-div.dragging, .card-mat.dragging, .copy-box.dragging {
+    .folder-div.dragging, .card-mat.dragging {
       opacity: 0.4;
       border: 2px dashed #2196f3;
     }
-    
-    /* Drop Target Visuals */
     .folder-div.drag-over, .buttons-list.drag-over {
         background-color: #e3f2fd;
         border: 2px dashed #2196f3;
@@ -146,7 +147,7 @@
        flex-wrap: wrap;
        gap: 10px;
        background: #f9f9f9; 
-       min-height: 50px; /* Allow dropping into empty folders */
+       min-height: 50px; 
     }
 
     .progress-track {
@@ -186,6 +187,7 @@
       z-index: 1000;
     }
     .copy-box:active { transform: scale(0.96); }
+    .copy-box.dragging { opacity: 0.5; border: 2px dashed #333; }
 
     .tooltip {
       visibility: hidden;
@@ -224,14 +226,25 @@
 
     /* --- SimpList Task Styles --- */
     .card-list { display: flex; flex-direction: column; gap: 20px; }
-    .task-list { list-style: none; padding: 0; margin: 0; }
-    .task-node { border-bottom: 1px solid #f0f0f0; padding: 6px 0; }
-    .task-node:last-child { border-bottom: none; }
+    .task-list { list-style: none; padding: 0; margin: 0; min-height: 20px; }
+    
+    .task-node { 
+        border-bottom: 1px solid #f0f0f0; 
+        padding: 6px 0; 
+        border: 2px solid transparent; 
+        border-radius: 4px;
+        transition: border-color 0.1s, background-color 0.1s;
+    }
+    .task-node.dragging-task { opacity: 0.4; }
+    .task-node.drop-above { border-top: 2px solid #2196f3; }
+    .task-node.drop-below { border-bottom: 2px solid #2196f3; }
+    .task-node.drop-inside { background-color: #e8f5e9; border: 2px dashed #4caf50; }
+    
     .task-children { margin-left: 24px; border-left: 1px solid #eee; padding-left: 8px; }
     .task-children.hidden { display: none; }
     .task-row { display: flex; align-items: center; gap: 8px; padding: 4px 0; }
     .task-checkbox { cursor: pointer; accent-color: #2196f3; width: 16px; height: 16px; }
-    .task-text { flex: 1; margin: 0; outline: none; font-size: 15px; line-height: 1.4; padding: 3px 6px; border-radius: 4px; border: 1px solid transparent; }
+    .task-text { flex: 1; margin: 0; outline: none; font-size: 15px; line-height: 1.4; padding: 3px 6px; border-radius: 4px; border: 1px solid transparent; cursor: text; }
     .task-text:focus { background: #fff; border-color:#ddd; }
     .task-done { text-decoration: line-through; color: #888; }
     .date-input { border: 1px solid #ddd; border-radius: 4px; padding: 3px; font-size: 11px; color: #666; font-family: inherit; background: #f9f9f9; cursor: pointer; max-width: 110px; }
@@ -252,10 +265,22 @@
     .template-picker-btn { background: #e3f2fd; color: #2196f3; border: none; border-radius: 4px; cursor: pointer; padding: 0 10px; display: flex; align-items: center; justify-content: center; }
     .template-picker-btn:hover { background: #bbdefb; }
     
-    /* Drag Handle in Header */
-    .drag-handle { cursor: grab; margin-right: 5px; color: rgba(0,0,0,0.2); font-size: 20px; }
+    /* Drag Handle Styles */
+    .drag-handle { cursor: grab; margin-right: 5px; color: rgba(0,0,0,0.2); font-size: 20px; user-select: none; }
     .drag-handle:hover { color: rgba(0,0,0,0.4); }
     .drag-handle:active { cursor: grabbing; }
+    
+    .card-drag-handle { cursor: grab; } 
+    
+    .task-drag-handle { 
+        cursor: grab; 
+        color: #ddd; 
+        font-size: 18px; 
+        margin-right: 2px; 
+        user-select: none;
+    }
+    .task-drag-handle:hover { color: #999; }
+    .task-drag-handle:active { cursor: grabbing; color: #2196f3; }
 
     /* --- Modals --- */
     .modal-overlay { position: fixed; top:0; left:0; right:0; bottom:0; background: rgba(0,0,0,0.5); display: none; justify-content: center; align-items: center; z-index: 10000; }
@@ -311,7 +336,7 @@
   <div class="card-list" id="card-list">
     </div>
 
-  <div id="custom-buttons-section" style="margin-top: 40px; border-top: 1px solid #ddd; padding-top: 20px;">
+  <div id="custom-buttons-section">
     <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:15px;">
       <h2 style="margin:0; font-size:1.3rem; color:#444;">Quick Copy Buttons</h2>
       <div style="display:flex; gap:10px;">
@@ -514,24 +539,29 @@ function getDateStatus(dateStr) {
 /**
  * --- PART 2: DATA & STATE ---
  */
+// Data Fix: Ensure folders array exists and check for saved collapsed state
 let buttonFolders = JSON.parse(localStorage.getItem('foldersV2')) || [];
+if(Array.isArray(buttonFolders)) {
+    buttonFolders.forEach(f => {
+        if(f.collapsed === undefined) f.collapsed = false;
+    });
+}
+
 let customTags = JSON.parse(localStorage.getItem('customTags')) || [
     {name: '[MyName]', value: 'Your Name'},
     {name: '[Phone]', value: '555-0199'}
 ];
 let cards = JSON.parse(localStorage.getItem('simpList-data')) || [
-  { id: '1', title: 'To Do', color:'#673ab7', tasks: [{text: 'Welcome to SimpList!', done: false, due:'', subtasks:[]}] }
+  { id: '1', title: 'To Do', color:'#673ab7', collapsed: false, tasks: [{text: 'Welcome to SimpList!', done: false, due:'', subtasks:[]}] }
 ];
+// Ensure card collapsed state exists
+if(Array.isArray(cards)) {
+    cards.forEach(c => { if(c.collapsed === undefined) c.collapsed = false; });
+}
+
 let taskTemplates = JSON.parse(localStorage.getItem('simpList-templates')) || [];
 
 let currentTemplateTree = []; 
-
-// Variables for Drag and Drop
-let dragSrcEl = null;
-let dragType = null; // 'folder' or 'button' or 'card'
-let dragSrcFolderIndex = null;
-let dragSrcBtnIndex = null;
-let dragSrcCardIndex = null;
 
 // Modals State
 let editingFolderId = null; 
@@ -540,6 +570,14 @@ let targetFolderId = null;
 let editingTagIndex = null;
 let editingListId = null; 
 let editingTemplateId = null;
+
+// Drag State
+let dragSrcIndex = null; // For cards
+let dragType = null; // 'card', 'folder', 'button', 'task'
+let dragSrcFolderIndex = null;
+let dragSrcButtonIndex = null;
+let dragSrcTaskPath = null;
+let dragSrcCardIndex = null;
 
 /**
  * --- PART 3: TAGS MANAGER ---
@@ -790,6 +828,9 @@ function renderButtonFolders() {
   }
 
   buttonFolders.forEach((folder, fIndex) => {
+    // Ensure data integrity
+    if (folder.collapsed === undefined) folder.collapsed = false;
+
     const folderName = (folder.folderName || '').toLowerCase();
     const matchesFolder = folderName.includes(searchQuery);
     let filteredItems = folder.items || [];
@@ -807,6 +848,10 @@ function renderButtonFolders() {
     const textColor = getContrastYIQ(folderColor);
     const folderDiv = document.createElement('div');
     folderDiv.className = 'folder-div';
+    
+    if (folder.collapsed && !searchQuery) {
+        folderDiv.classList.add('collapsed');
+    }
     
     // Drag Attributes for Folder
     folderDiv.draggable = true;
@@ -862,9 +907,13 @@ function renderButtonFolders() {
         </button>
       </div>
     `;
+    
+    // Toggle Logic with Persistence
     header.onclick = (e) => {
         if(!e.target.closest('.drag-handle') && !e.target.closest('button')) {
             folderDiv.classList.toggle('collapsed');
+            folder.collapsed = folderDiv.classList.contains('collapsed');
+            saveButtonFolders();
         }
     };
 
@@ -886,7 +935,7 @@ function renderButtonFolders() {
             list.classList.remove('drag-over');
             // If dropping on list background (not a specific button), append to end
             const srcFolder = buttonFolders[dragSrcFolderIndex];
-            const btnItem = srcFolder.items.splice(dragSrcBtnIndex, 1)[0];
+            const btnItem = srcFolder.items.splice(dragSrcButtonIndex, 1)[0];
             folder.items.push(btnItem);
             saveButtonFolders();
         }
@@ -917,26 +966,22 @@ function renderButtonFolders() {
             e.stopPropagation();
             dragType = 'button';
             dragSrcFolderIndex = fIndex;
-            dragSrcBtnIndex = realIdx;
+            dragSrcButtonIndex = realIdx;
             e.dataTransfer.effectAllowed = 'move';
             btn.classList.add('dragging');
         };
         btn.ondragover = (e) => {
             if(dragType === 'button') {
-                e.preventDefault(); // Allow drop
+                e.preventDefault(); 
             }
         };
         btn.ondragend = () => btn.classList.remove('dragging');
         btn.ondrop = (e) => {
             if(dragType === 'button') {
                 e.stopPropagation();
-                // Move button logic
                 const srcFolder = buttonFolders[dragSrcFolderIndex];
-                const btnItem = srcFolder.items.splice(dragSrcBtnIndex, 1)[0];
-                
-                // If moving within same folder, adjust index
+                const btnItem = srcFolder.items.splice(dragSrcButtonIndex, 1)[0];
                 let targetIdx = realIdx;
-                
                 folder.items.splice(targetIdx, 0, btnItem);
                 saveButtonFolders();
             }
@@ -1134,6 +1179,81 @@ function calculateCardProgress(card) {
     return total === 0 ? 0 : (done/total)*100;
 }
 
+function moveTask(srcCardIdx, srcPath, destCardIdx, destPath, position) {
+    // 1. CRITICAL CHECK: Prevent drop on self
+    if (srcCardIdx === destCardIdx) {
+        // Child check
+        const isChild = srcPath.every((val, i) => destPath[i] === val);
+        if (isChild && destPath.length > srcPath.length) return;
+        
+        // Exact same location (Self-Drop) - ABORT IMMEDIATELY to prevent deletion
+        if (JSON.stringify(srcPath) === JSON.stringify(destPath) && position === 'inside') return;
+        
+        // Same list sibling check - if index is same or next (visual same), abort
+        if (position !== 'inside' && srcPath.length === destPath.length) {
+             const parentSrc = srcPath.slice(0, -1);
+             const parentDest = destPath.slice(0, -1);
+             if (JSON.stringify(parentSrc) === JSON.stringify(parentDest)) {
+                 const srcI = srcPath[srcPath.length-1];
+                 const destI = destPath[destPath.length-1];
+                 if (srcI === destI) return;
+                 if (position === 'after' && srcI === destI) return;
+                 if (position === 'before' && srcI === destI) return;
+             }
+        }
+    }
+
+    // 2. Get Source Task
+    const markTask = getTaskByPath(srcCardIdx, srcPath);
+    markTask._toBeDeleted = true;
+    
+    // 3. Clone (Deep Copy)
+    const taskClone = JSON.parse(JSON.stringify(markTask));
+    delete taskClone._toBeDeleted; // Clean the clone
+    
+    // 4. Insert Clone
+    if (position === 'inside') {
+        const target = getTaskByPath(destCardIdx, destPath);
+        if(!target.subtasks) target.subtasks = [];
+        target.subtasks.push(taskClone);
+        target.collapsed = false; 
+    } else if (position === 'inside-card') {
+        cards[destCardIdx].tasks.push(taskClone);
+    } else {
+        let targetList;
+        let insertIdx;
+        
+        if (destPath.length === 1) {
+            targetList = cards[destCardIdx].tasks;
+            insertIdx = destPath[0];
+        } else {
+            const parentPath = destPath.slice(0, -1);
+            const parent = getTaskByPath(destCardIdx, parentPath);
+            targetList = parent.subtasks;
+            insertIdx = destPath[destPath.length - 1];
+        }
+        
+        if (position === 'after') insertIdx++;
+        targetList.splice(insertIdx, 0, taskClone);
+    }
+    
+    // 5. Sweep (Remove Original)
+    function sweep(taskList) {
+        for(let i = taskList.length - 1; i >= 0; i--) {
+            if(taskList[i]._toBeDeleted) {
+                taskList.splice(i, 1);
+                return true; 
+            }
+            if(taskList[i].subtasks && sweep(taskList[i].subtasks)) return true;
+        }
+        return false;
+    }
+    sweep(cards[srcCardIdx].tasks);
+    
+    localStorage.setItem('simpList-data', JSON.stringify(cards));
+    renderCards();
+}
+
 function renderCards() {
   const container = document.getElementById('card-list');
   const taskSearchQuery = document.getElementById('task-search').value.toLowerCase();
@@ -1142,37 +1262,30 @@ function renderCards() {
   cards.forEach((card, cardIndex) => {
     const cardDiv = document.createElement('div');
     cardDiv.className = 'card-mat';
-    cardDiv.draggable = true; // Drag & Drop
     
-    // Drag Events
-    cardDiv.ondragstart = (e) => {
-        dragSrcCardIndex = cardIndex;
-        dragType = 'card';
-        e.dataTransfer.effectAllowed = 'move';
-        cardDiv.classList.add('dragging');
-    };
+    // Card Drop Logic
     cardDiv.ondragover = (e) => {
-        if(dragType === 'card') {
-            e.preventDefault();
-            e.dataTransfer.dropEffect = 'move';
-        }
-    };
-    cardDiv.ondragend = () => {
-        cardDiv.classList.remove('dragging');
+        if(dragType === 'card') { e.preventDefault(); e.dataTransfer.dropEffect = 'move'; }
+        if(dragType === 'task') { e.preventDefault(); } 
     };
     cardDiv.ondrop = (e) => {
-        if(dragType === 'card') {
-            e.stopPropagation();
-            if (dragSrcCardIndex !== cardIndex) {
-                // Swap logic
-                const item = cards.splice(dragSrcCardIndex, 1)[0];
-                cards.splice(cardIndex, 0, item);
-                localStorage.setItem('simpList-data', JSON.stringify(cards));
-                renderCards();
-            }
+        e.stopPropagation();
+        if(dragType === 'card' && dragSrcCardIndex !== cardIndex) {
+            const item = cards.splice(dragSrcCardIndex, 1)[0];
+            cards.splice(cardIndex, 0, item);
+            localStorage.setItem('simpList-data', JSON.stringify(cards));
+            renderCards();
+        }
+        if(dragType === 'task') {
+             if (!e.target.closest('.task-node')) {
+                 moveTask(dragSrcCardIndex, dragSrcTaskPath, cardIndex, [], 'inside-card');
+             }
         }
     };
     
+    // Persist collapsed state
+    if(card.collapsed && !taskSearchQuery) cardDiv.classList.add('collapsed');
+
     const headerColor = card.color || '#f3edff';
     const textColor = getContrastYIQ(headerColor);
     const pct = calculateCardProgress(card);
@@ -1185,7 +1298,7 @@ function renderCards() {
     header.innerHTML = `
       <div style="flex:1;">
         <div style="display:flex; align-items:center;">
-            <span class="material-symbols-outlined drag-handle" title="Drag to reorder">drag_indicator</span>
+            <span class="material-symbols-outlined drag-handle card-drag-handle" draggable="true" title="Drag to reorder">drag_indicator</span>
             <div class="title-area">
                 <span style="font-size:1.1em; font-weight:600;">${escapeHtml(card.title)}</span>
             </div>
@@ -1201,9 +1314,24 @@ function renderCards() {
       </div>
     `;
     
+    // LIST DRAG HANDLER
+    const listGrip = header.querySelector('.card-drag-handle');
+    listGrip.ondragstart = (e) => {
+        e.stopPropagation();
+        dragSrcCardIndex = cardIndex;
+        dragType = 'card';
+        e.dataTransfer.effectAllowed = 'move';
+        cardDiv.classList.add('dragging');
+    };
+    listGrip.ondragend = () => {
+        cardDiv.classList.remove('dragging');
+    };
+    
     header.onclick = (e) => {
         if(!e.target.closest('.drag-handle') && !e.target.closest('button')) {
             cardDiv.classList.toggle('collapsed');
+            card.collapsed = cardDiv.classList.contains('collapsed');
+            localStorage.setItem('simpList-data', JSON.stringify(cards));
         }
     };
     
@@ -1223,11 +1351,69 @@ function renderCards() {
             
             const nodeDiv = document.createElement('div');
             nodeDiv.className = 'task-node';
+            
+            // Task Drop Logic
+            nodeDiv.ondragover = (e) => {
+                if(dragType !== 'task') return;
+                
+                // PREVENT SELF DROP HIGHLIGHTS
+                if (dragSrcCardIndex === cardIndex && JSON.stringify(dragSrcTaskPath) === JSON.stringify(currentPath)) {
+                    return; 
+                }
+
+                e.preventDefault();
+                e.stopPropagation();
+                
+                const rect = nodeDiv.getBoundingClientRect();
+                const y = e.clientY - rect.top;
+                
+                nodeDiv.classList.remove('drop-above', 'drop-below', 'drop-inside');
+                if (y < rect.height * 0.25) nodeDiv.classList.add('drop-above');
+                else if (y > rect.height * 0.75) nodeDiv.classList.add('drop-below');
+                else nodeDiv.classList.add('drop-inside');
+            };
+            
+            nodeDiv.ondragleave = (e) => {
+                // Prevent flicker when hovering inner elements
+                if(nodeDiv.contains(e.relatedTarget)) return;
+                nodeDiv.classList.remove('drop-above', 'drop-below', 'drop-inside');
+            };
+            
+            nodeDiv.ondrop = (e) => {
+                if(dragType !== 'task') return;
+                e.stopPropagation();
+                
+                let position = 'inside';
+                if (nodeDiv.classList.contains('drop-above')) position = 'before';
+                else if (nodeDiv.classList.contains('drop-below')) position = 'after';
+                
+                nodeDiv.classList.remove('drop-above', 'drop-below', 'drop-inside');
+                moveTask(dragSrcCardIndex, dragSrcTaskPath, cardIndex, currentPath, position);
+            };
+            
             const nodePct = calculateProgress(task);
             
             const row = document.createElement('div');
             row.className = 'task-row';
             
+            const taskHandle = document.createElement('span');
+            taskHandle.className = 'material-symbols-outlined task-drag-handle';
+            taskHandle.innerText = 'drag_indicator';
+            taskHandle.draggable = true;
+            
+            taskHandle.ondragstart = (e) => {
+                e.stopPropagation();
+                dragType = 'task';
+                dragSrcCardIndex = cardIndex;
+                dragSrcTaskPath = currentPath;
+                e.dataTransfer.effectAllowed = 'move';
+                nodeDiv.classList.add('dragging-task');
+            };
+            taskHandle.ondragend = () => {
+                nodeDiv.classList.remove('dragging-task');
+                document.querySelectorAll('.task-node').forEach(el => el.classList.remove('drop-above', 'drop-below', 'drop-inside'));
+            };
+
             const chevron = document.createElement('span');
             chevron.className = 'material-symbols-outlined collapse-icon';
             if (task.subtasks && task.subtasks.length > 0) {
@@ -1268,6 +1454,7 @@ function renderCards() {
             delBtn.innerText = 'delete';
             delBtn.onclick = () => deleteTask(cardIndex, pathStr);
             
+            row.appendChild(taskHandle); 
             row.appendChild(chevron);
             row.appendChild(checkbox);
             row.appendChild(span);
