@@ -6,32 +6,33 @@
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" />
   <style>
-    /* --- SimpList Base Styles --- */
+    /* --- SimpList Base Styles (COMPACT MODE) --- */
     body {
       font-family: 'Segoe UI', Arial, sans-serif;
       background: #f5f5f5;
       margin: 0;
       min-height: 100vh;
+      font-size: 13px; /* Reduced from 16px/default */
     }
     .topbar {
       display: flex;
       align-items: center;
       background: #2196F3;
       color: white;
-      padding: 0 16px;
-      height: 48px;
+      padding: 0 12px; /* Reduced padding */
+      height: 40px;    /* Reduced height from 48px */
       box-shadow: 0 2px 4px rgba(0,0,0,.08);
       gap: 8px;
     }
-    .topbar h1 { font-size: 1.2rem; margin: 0; font-weight: 500; }
+    .topbar h1 { font-size: 1.1rem; margin: 0; font-weight: 500; }
     .topbar .spacer { flex: 1; }
     .topbar .icon-btn {
       background: none;
       border: none;
       color: inherit;
       cursor: pointer;
-      font-size: 24px;
-      padding: 8px;
+      font-size: 20px; /* Smaller icons */
+      padding: 6px;
       border-radius: 50%;
       transition: background 0.15s;
       display: flex;
@@ -41,46 +42,46 @@
     .topbar .icon-btn:hover { background: rgba(255,255,255,0.15); }
 
     .container {
-      padding: 24px 10px;
+      padding: 15px 10px; /* Tighter padding */
       max-width: 1200px;
       margin: 0 auto;
     }
 
     /* --- Custom Button / Clipboard Manager Styles --- */
     #custom-buttons-section {
-      margin-top: 40px; 
+      margin-top: 30px; 
       border-top: 1px solid #ddd; 
-      padding-top: 20px;
+      padding-top: 15px;
       animation: fadeIn 0.4s ease;
     }
     
     .search-row {
       display: flex;
-      gap: 10px;
-      margin-bottom: 15px;
+      gap: 8px;
+      margin-bottom: 10px;
       align-items: center;
     }
     .search-input {
       flex: 1;
-      padding: 10px 15px;
+      padding: 6px 12px; /* Compact input */
       border: 1px solid #ddd;
       border-radius: 20px;
       outline: none;
-      font-size: 14px;
+      font-size: 13px;
       transition: border 0.2s, box-shadow 0.2s;
     }
     .search-input:focus {
       border-color: #2196f3;
-      box-shadow: 0 0 0 3px rgba(33, 150, 243, 0.1);
+      box-shadow: 0 0 0 2px rgba(33, 150, 243, 0.1);
     }
 
     /* FOLDERS & LISTS COMMON STYLES */
     .folder-div, .card-mat {
       background: #fff;
       border-radius: 6px;
-      margin-bottom: 15px;
+      margin-bottom: 8px; /* Reduced margin (50% closer) */
       overflow: visible; 
-      box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+      box-shadow: 0 1px 3px rgba(0,0,0,0.05);
       border: 1px solid rgba(0,0,0,0.1);
       position: relative;
       transition: transform 0.2s, opacity 0.2s;
@@ -97,7 +98,7 @@
     }
 
     .folder-header, .card-header {
-      padding: 10px 15px;
+      padding: 6px 10px; /* Tighter header */
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -114,17 +115,17 @@
     }
 
     .folder-header:hover, .card-header:hover { filter: brightness(1.05); }
-    .folder-header .title-area, .card-header .title-area { display: flex; align-items: center; gap: 8px; flex: 1; }
+    .folder-header .title-area, .card-header .title-area { display: flex; align-items: center; gap: 6px; flex: 1; }
     
     .controls button {
       background: rgba(255,255,255,0.3);
       border: none;
       color: inherit;
-      margin-left: 5px;
+      margin-left: 4px;
       border-radius: 4px;
       cursor: pointer;
-      padding: 4px 8px;
-      font-size: 14px;
+      padding: 2px 6px;
+      font-size: 12px;
       display: inline-flex;
       align-items: center;
       justify-content: center;
@@ -132,7 +133,7 @@
     .controls button:hover { background: rgba(255,255,255,0.5); }
     
     .buttons-list, .card-content {
-      padding: 12px;
+      padding: 8px; /* Reduced content padding */
       background: #fff;
       border-radius: 0 0 5px 5px;
     }
@@ -145,16 +146,16 @@
     .buttons-list {
        display: flex;
        flex-wrap: wrap;
-       gap: 10px;
+       gap: 6px; /* Tighter buttons */
        background: #f9f9f9; 
-       min-height: 50px; 
+       min-height: 30px; 
     }
 
     .progress-track {
-      height: 4px;
+      height: 3px;
       background: rgba(0,0,0,0.1);
       border-radius: 2px;
-      margin-top: 5px;
+      margin-top: 4px;
       width: 100%;
       overflow: hidden;
       display: none; 
@@ -168,21 +169,21 @@
     
     .copy-box {
       position: relative;
-      padding: 8px 16px;
-      border-radius: 20px;
+      padding: 5px 10px; /* Smaller copy buttons */
+      border-radius: 15px;
       cursor: pointer;
       border: 1px solid rgba(0,0,0,0.05);
-      font-size: 14px;
+      font-size: 12px;
       font-weight: 500;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      box-shadow: 0 1px 2px rgba(0,0,0,0.1);
       transition: transform 0.1s, box-shadow 0.15s, filter 0.15s;
       display: flex;
       align-items: center;
       user-select: none;
     }
     .copy-box:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+      transform: translateY(-1px);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.15);
       filter: brightness(1.05);
       z-index: 1000;
     }
@@ -194,23 +195,23 @@
       background-color: #333;
       color: #fff;
       text-align: center;
-      border-radius: 6px;
-      padding: 8px 12px;
+      border-radius: 4px;
+      padding: 6px 10px;
       position: absolute;
       z-index: 9999;
-      bottom: 130%;
+      bottom: 125%;
       left: 50%;
       transform: translateX(-50%);
       opacity: 0;
       transition: opacity 0.2s;
       width: max-content;
-      max-width: 280px;
-      font-size: 12px;
+      max-width: 250px;
+      font-size: 11px;
       font-weight: normal;
       pointer-events: none;
       white-space: pre-wrap;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.25);
-      line-height: 1.4;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.25);
+      line-height: 1.3;
     }
     .tooltip::after {
       content: "";
@@ -225,12 +226,16 @@
     .copy-box:hover .tooltip { visibility: visible; opacity: 1; }
 
     /* --- SimpList Task Styles --- */
-    .card-list { display: flex; flex-direction: column; gap: 20px; }
-    .task-list { list-style: none; padding: 0; margin: 0; min-height: 20px; }
+    .card-list { 
+        display: flex; 
+        flex-direction: column; 
+        gap: 10px; /* 50% Closer task lists (was 20px) */
+    }
+    .task-list { list-style: none; padding: 0; margin: 0; min-height: 15px; }
     
     .task-node { 
         border-bottom: 1px solid #f0f0f0; 
-        padding: 6px 0; 
+        padding: 4px 0; /* Tighter rows */
         border: 2px solid transparent; 
         border-radius: 4px;
         transition: border-color 0.1s, background-color 0.1s;
@@ -240,33 +245,51 @@
     .task-node.drop-below { border-bottom: 2px solid #2196f3; }
     .task-node.drop-inside { background-color: #e8f5e9; border: 2px dashed #4caf50; }
     
-    .task-children { margin-left: 24px; border-left: 1px solid #eee; padding-left: 8px; }
+    .task-children { margin-left: 20px; border-left: 1px solid #eee; padding-left: 6px; }
     .task-children.hidden { display: none; }
-    .task-row { display: flex; align-items: center; gap: 8px; padding: 4px 0; }
-    .task-checkbox { cursor: pointer; accent-color: #2196f3; width: 16px; height: 16px; }
-    .task-text { flex: 1; margin: 0; outline: none; font-size: 15px; line-height: 1.4; padding: 3px 6px; border-radius: 4px; border: 1px solid transparent; cursor: text; }
+    .task-row { display: flex; align-items: center; gap: 6px; padding: 2px 0; }
+    
+    /* STATUS ICONS (Compact) */
+    .task-status-icon { 
+        cursor: pointer; 
+        user-select: none; 
+        font-size: 18px; /* Smaller icon */
+        width: 18px; height: 18px;
+        transition: color 0.2s, transform 0.1s;
+    }
+    .task-status-icon:active { transform: scale(0.9); }
+    .status-todo { color: #bdbdbd; }
+    .status-doing { color: #fb8c00; }
+    .status-done { color: #4caf50; }
+
+    .task-text { flex: 1; margin: 0; outline: none; font-size: 13px; line-height: 1.4; padding: 2px 4px; border-radius: 4px; border: 1px solid transparent; cursor: text; }
     .task-text:focus { background: #fff; border-color:#ddd; }
     .task-done { text-decoration: line-through; color: #888; }
-    .date-input { border: 1px solid #ddd; border-radius: 4px; padding: 3px; font-size: 11px; color: #666; font-family: inherit; background: #f9f9f9; cursor: pointer; max-width: 110px; }
+    
+    .date-input { border: 1px solid #ddd; border-radius: 4px; padding: 2px; font-size: 10px; color: #666; font-family: inherit; background: #f9f9f9; cursor: pointer; max-width: 90px; }
     .date-input:hover { background: #eee; }
     .date-input.overdue { border-color: #e57373; color: #d32f2f; background: #ffebee; }
     .date-input.upcoming { border-color: #ffb74d; color: #e65100; background: #fff3e0; }
-    .node-progress-track { height: 3px; background: #eee; border-radius: 2px; margin-top: 2px; margin-left: 28px; overflow: hidden; width: 100px; display: inline-block; vertical-align: middle; margin-right: 10px; }
+    
+    .node-progress-track { height: 3px; background: #eee; border-radius: 2px; margin-top: 2px; margin-left: 24px; overflow: hidden; width: 80px; display: inline-block; vertical-align: middle; margin-right: 8px; }
     .node-progress-fill { height: 100%; background: #4caf50; transition: width 0.3s; }
-    .action-btn { color: #ccc; cursor: pointer; font-size: 18px; user-select: none; }
+    
+    .action-btn { color: #ccc; cursor: pointer; font-size: 16px; user-select: none; }
     .action-btn:hover { color: #2196f3; }
     .action-btn.delete:hover { color: #e57373; }
-    .collapse-icon { cursor: pointer; font-size: 20px; color: #999; user-select: none; width: 20px; display: inline-flex; justify-content: center; }
+    
+    .collapse-icon { cursor: pointer; font-size: 18px; color: #999; user-select: none; width: 18px; display: inline-flex; justify-content: center; }
     .collapse-icon:hover { color: #555; }
-    .collapse-placeholder { width: 20px; }
-    .add-task-row { display: flex; gap: 10px; margin-top: 15px; }
-    .add-task-input { flex: 1; padding: 8px; border: 1px solid #ddd; border-radius: 4px; outline: none; }
+    .collapse-placeholder { width: 18px; }
+    
+    .add-task-row { display: flex; gap: 8px; margin-top: 10px; }
+    .add-task-input { flex: 1; padding: 6px; border: 1px solid #ddd; border-radius: 4px; outline: none; font-size: 13px; }
     .add-task-input:focus { border-color: #2196f3; }
-    .template-picker-btn { background: #e3f2fd; color: #2196f3; border: none; border-radius: 4px; cursor: pointer; padding: 0 10px; display: flex; align-items: center; justify-content: center; }
+    .template-picker-btn { background: #e3f2fd; color: #2196f3; border: none; border-radius: 4px; cursor: pointer; padding: 0 8px; display: flex; align-items: center; justify-content: center; }
     .template-picker-btn:hover { background: #bbdefb; }
     
-    /* Drag Handle Styles */
-    .drag-handle { cursor: grab; margin-right: 5px; color: rgba(0,0,0,0.2); font-size: 20px; user-select: none; }
+    /* Drag Handle Styles (Compact) */
+    .drag-handle { cursor: grab; margin-right: 4px; color: rgba(0,0,0,0.2); font-size: 18px; user-select: none; }
     .drag-handle:hover { color: rgba(0,0,0,0.4); }
     .drag-handle:active { cursor: grabbing; }
     
@@ -275,32 +298,32 @@
     .task-drag-handle { 
         cursor: grab; 
         color: #ddd; 
-        font-size: 18px; 
+        font-size: 16px; 
         margin-right: 2px; 
         user-select: none;
     }
     .task-drag-handle:hover { color: #999; }
     .task-drag-handle:active { cursor: grabbing; color: #2196f3; }
 
-    /* --- Modals --- */
+    /* --- Modals (Compact) --- */
     .modal-overlay { position: fixed; top:0; left:0; right:0; bottom:0; background: rgba(0,0,0,0.5); display: none; justify-content: center; align-items: center; z-index: 10000; }
-    .modal { background: white; padding: 24px; border-radius: 8px; width: 550px; max-width: 95%; box-shadow: 0 4px 20px rgba(0,0,0,0.2); max-height: 90vh; display: flex; flex-direction: column; }
-    .input-group { margin-bottom: 16px; }
-    .input-group label { display: block; margin-bottom: 6px; font-weight: 500; color: #555; }
-    .input-group input[type="text"], .input-group textarea { width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box; font-family: inherit; }
-    .input-group input[type="color"] { width: 100%; height: 40px; padding: 2px; border: 1px solid #ccc; border-radius: 4px; cursor: pointer; }
-    .modal-actions { display: flex; justify-content: space-between; margin-top: 20px; }
-    .modal-actions-right { display: flex; gap: 10px; margin-left: auto; }
-    .btn-primary { background: #2196f3; color: white; border: none; padding: 8px 16px; border-radius: 4px; cursor: pointer; font-weight: 500; }
-    .btn-secondary { background: #ddd; color: #333; border: none; padding: 8px 16px; border-radius: 4px; cursor: pointer; }
-    .btn-danger { background: #e57373; color: white; border: none; padding: 8px 16px; border-radius: 4px; cursor: pointer; }
-    .tags-list-container { max-height: 350px; overflow-y: auto; border: 1px solid #eee; margin-bottom: 15px; padding: 5px; border-radius: 4px; }
-    .tag-item { display: flex; justify-content: space-between; align-items: center; padding: 8px; background: #f9f9f9; margin-bottom: 5px; border-radius: 4px; font-size: 14px; }
+    .modal { background: white; padding: 20px; border-radius: 8px; width: 500px; max-width: 95%; box-shadow: 0 4px 20px rgba(0,0,0,0.2); max-height: 90vh; display: flex; flex-direction: column; }
+    .input-group { margin-bottom: 12px; }
+    .input-group label { display: block; margin-bottom: 4px; font-weight: 500; color: #555; font-size: 12px; }
+    .input-group input[type="text"], .input-group textarea { width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box; font-family: inherit; font-size: 13px; }
+    .input-group input[type="color"] { width: 100%; height: 35px; padding: 2px; border: 1px solid #ccc; border-radius: 4px; cursor: pointer; }
+    .modal-actions { display: flex; justify-content: space-between; margin-top: 15px; }
+    .modal-actions-right { display: flex; gap: 8px; margin-left: auto; }
+    .btn-primary { background: #2196f3; color: white; border: none; padding: 6px 14px; border-radius: 4px; cursor: pointer; font-weight: 500; font-size: 13px; }
+    .btn-secondary { background: #ddd; color: #333; border: none; padding: 6px 14px; border-radius: 4px; cursor: pointer; font-size: 13px; }
+    .btn-danger { background: #e57373; color: white; border: none; padding: 6px 14px; border-radius: 4px; cursor: pointer; font-size: 13px; }
+    .tags-list-container { max-height: 300px; overflow-y: auto; border: 1px solid #eee; margin-bottom: 12px; padding: 4px; border-radius: 4px; }
+    .tag-item { display: flex; justify-content: space-between; align-items: center; padding: 6px; background: #f9f9f9; margin-bottom: 4px; border-radius: 4px; font-size: 13px; }
     .tag-item:last-child { margin-bottom: 0; }
     .tag-key { font-weight: bold; color: #2196f3; margin-right: 10px; }
-    .tag-actions { display:flex; gap: 5px; }
-    .mini-menu { position: absolute; background: white; box-shadow: 0 4px 12px rgba(0,0,0,0.2); border-radius: 4px; padding: 5px 0; z-index: 5000; width: 200px; max-height: 300px; overflow-y: auto; display: none; right: 0; bottom: 100%; }
-    .mini-menu-item { padding: 8px 15px; cursor: pointer; font-size: 14px; color: #333; }
+    .tag-actions { display:flex; gap: 4px; }
+    .mini-menu { position: absolute; background: white; box-shadow: 0 4px 12px rgba(0,0,0,0.2); border-radius: 4px; padding: 4px 0; z-index: 5000; width: 180px; max-height: 250px; overflow-y: auto; display: none; right: 0; bottom: 100%; }
+    .mini-menu-item { padding: 6px 12px; cursor: pointer; font-size: 13px; color: #333; }
     .mini-menu-item:hover { background: #f0f0f0; color: #2196f3; }
 
     @keyframes fadeIn { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
@@ -309,7 +332,7 @@
 <body>
 
 <div class="topbar">
-  <span class="material-symbols-outlined">checklist</span>
+  <span class="material-symbols-outlined" style="font-size: 22px;">checklist</span>
   <h1>SimpList</h1>
   <div class="spacer"></div>
   <button class="icon-btn" onclick="exportData()" title="Export Data"><span class="material-symbols-outlined">download</span></button>
@@ -319,11 +342,11 @@
 
 <div class="container">
   
-  <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:15px; margin-top:20px;">
-    <h2 style="margin:0; font-size:1.3rem; color:#444;">Task Lists</h2>
-    <div style="display:flex; gap:10px;">
+  <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:12px; margin-top:15px;">
+    <h2 style="margin:0; font-size:1.2rem; color:#444;">Task Lists</h2>
+    <div style="display:flex; gap:8px;">
         <button class="btn-secondary" onclick="openTemplateManager()">
-            <span class="material-symbols-outlined" style="font-size:16px; vertical-align:middle;">extension</span> Templates
+            <span class="material-symbols-outlined" style="font-size:14px; vertical-align:middle;">extension</span> Templates
         </button>
         <button class="btn-primary" onclick="openListModal(null)">+ New List</button>
     </div>
@@ -337,11 +360,11 @@
     </div>
 
   <div id="custom-buttons-section">
-    <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:15px;">
-      <h2 style="margin:0; font-size:1.3rem; color:#444;">Quick Copy Buttons</h2>
-      <div style="display:flex; gap:10px;">
+    <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:12px;">
+      <h2 style="margin:0; font-size:1.2rem; color:#444;">Quick Copy Buttons</h2>
+      <div style="display:flex; gap:8px;">
         <button class="btn-secondary" onclick="openTagsModal()">
-          <span class="material-symbols-outlined" style="font-size:16px; vertical-align:middle;">sell</span> Manage Tags
+          <span class="material-symbols-outlined" style="font-size:14px; vertical-align:middle;">sell</span> Manage Tags
         </button>
         <button class="btn-primary" onclick="openFolderModal(null)">+ New Folder</button>
       </div>
@@ -358,7 +381,7 @@
 
 <div id="folder-modal" class="modal-overlay">
   <div class="modal">
-    <h3 id="folder-modal-title" style="margin-top:0">Folder Settings</h3>
+    <h3 id="folder-modal-title" style="margin-top:0; font-size:1.2rem;">Folder Settings</h3>
     <div class="input-group">
       <label>Folder Name</label>
       <input type="text" id="folder-name-input" placeholder="e.g. Work Emails">
@@ -379,7 +402,7 @@
 
 <div id="list-modal" class="modal-overlay">
   <div class="modal">
-    <h3 id="list-modal-title" style="margin-top:0">List Settings</h3>
+    <h3 id="list-modal-title" style="margin-top:0; font-size:1.2rem;">List Settings</h3>
     <div class="input-group">
       <label>List Name</label>
       <input type="text" id="list-name-input" placeholder="e.g. Shopping List">
@@ -400,7 +423,7 @@
 
 <div id="btn-modal" class="modal-overlay">
   <div class="modal">
-    <h3 id="btn-modal-title" style="margin-top:0">Add Copy Button</h3>
+    <h3 id="btn-modal-title" style="margin-top:0; font-size:1.2rem;">Add Copy Button</h3>
     <div class="input-group">
       <label>Button Label</label>
       <input type="text" id="btn-label-input" placeholder="e.g. Appointment Reminder">
@@ -410,7 +433,7 @@
       <textarea id="btn-content-input" rows="4" placeholder="Text to copy..."></textarea>
       <div style="display:flex; justify-content:space-between; align-items:center; margin-top:4px;">
         <small style="color:#666;">Supports [Date], [Time] and Custom Tags.</small>
-        <select id="tag-inserter" style="font-size:12px; padding:2px;" onchange="insertTagIntoMessage(this)">
+        <select id="tag-inserter" style="font-size:11px; padding:2px;" onchange="insertTagIntoMessage(this)">
             <option value="">+ Insert Tag</option>
         </select>
       </div>
@@ -431,14 +454,14 @@
 
 <div id="tags-modal" class="modal-overlay">
     <div class="modal">
-      <h3 style="margin-top:0">Manage Custom Tags</h3>
-      <p style="font-size:13px; color:#666; margin-top:-10px;">Tags will be replaced in your messages automatically.</p>
+      <h3 style="margin-top:0; font-size:1.2rem;">Manage Custom Tags</h3>
+      <p style="font-size:12px; color:#666; margin-top:-8px;">Tags will be replaced in your messages automatically.</p>
       
       <div id="tags-list" class="tags-list-container"></div>
       
-      <div style="border-top:1px solid #eee; padding-top:15px;">
-          <h4 id="tag-form-title" style="margin:0 0 10px 0; font-size:14px;">Add New Tag</h4>
-          <div style="display:flex; gap:10px; margin-bottom:10px;">
+      <div style="border-top:1px solid #eee; padding-top:12px;">
+          <h4 id="tag-form-title" style="margin:0 0 8px 0; font-size:13px;">Add New Tag</h4>
+          <div style="display:flex; gap:8px; margin-bottom:8px;">
               <input type="text" id="new-tag-key" placeholder="Tag (e.g. [Name])" style="flex:1;">
               <input type="text" id="new-tag-val" placeholder="Value (e.g. John)" style="flex:1;">
           </div>
@@ -456,12 +479,12 @@
 
 <div id="template-modal" class="modal-overlay">
     <div class="modal">
-        <h3 style="margin-top:0">Task Templates</h3>
-        <p style="font-size:13px; color:#666; margin-top:-10px;">Create templates to quickly add tasks with deep structure.</p>
+        <h3 style="margin-top:0; font-size:1.2rem;">Task Templates</h3>
+        <p style="font-size:12px; color:#666; margin-top:-8px;">Create templates to quickly add tasks with deep structure.</p>
 
         <div id="tpl-list-view">
             <div id="tpl-list" class="tags-list-container" style="min-height:150px;"></div>
-            <button class="btn-primary" style="width:100%; margin-top:10px;" onclick="showTemplateEditor(null)">+ Create New Template</button>
+            <button class="btn-primary" style="width:100%; margin-top:8px;" onclick="showTemplateEditor(null)">+ Create New Template</button>
         </div>
 
         <div id="tpl-editor-view" style="display:none;">
@@ -470,10 +493,10 @@
                 <input type="text" id="tpl-name-input" placeholder="e.g. New Client Onboarding">
             </div>
             
-            <label style="display:block; margin-bottom:6px; font-weight:500; color:#555;">Template Structure</label>
-            <div id="tpl-tree-container" class="tags-list-container" style="max-height:250px; background:#fafafa; border:1px solid #ddd;">
+            <label style="display:block; margin-bottom:4px; font-weight:500; color:#555; font-size:12px;">Template Structure</label>
+            <div id="tpl-tree-container" class="tags-list-container" style="max-height:220px; background:#fafafa; border:1px solid #ddd;">
                 </div>
-            <button class="btn-secondary" style="width:100%; margin-top:5px; font-size:13px;" onclick="addRootTemplateItem()">+ Add Step</button>
+            <button class="btn-secondary" style="width:100%; margin-top:5px; font-size:12px;" onclick="addRootTemplateItem()">+ Add Step</button>
 
             <div class="modal-actions">
                 <button class="btn-secondary" onclick="showTemplateList()">Back</button>
@@ -552,7 +575,7 @@ let customTags = JSON.parse(localStorage.getItem('customTags')) || [
     {name: '[Phone]', value: '555-0199'}
 ];
 let cards = JSON.parse(localStorage.getItem('simpList-data')) || [
-  { id: '1', title: 'To Do', color:'#673ab7', collapsed: false, tasks: [{text: 'Welcome to SimpList!', done: false, due:'', subtasks:[]}] }
+  { id: '1', title: 'To Do', color:'#673ab7', tasks: [{text: 'Welcome to SimpList!', status:'todo', due:'', subtasks:[]}] }
 ];
 // Ensure card collapsed state exists
 if(Array.isArray(cards)) {
@@ -611,10 +634,10 @@ function renderTagsList() {
             </div>
             <div class="tag-actions">
                 <button onclick="editCustomTag(${idx})" title="Edit" style="border:none; background:none; color:#FFA000; cursor:pointer;">
-                    <span class="material-symbols-outlined" style="font-size:18px;">edit</span>
+                    <span class="material-symbols-outlined" style="font-size:16px;">edit</span>
                 </button>
                 <button onclick="deleteCustomTag(${idx})" title="Delete" style="border:none; background:none; color:#e57373; cursor:pointer;">
-                    <span class="material-symbols-outlined" style="font-size:18px;">close</span>
+                    <span class="material-symbols-outlined" style="font-size:16px;">close</span>
                 </button>
             </div>
         `;
@@ -691,8 +714,8 @@ function showTemplateList() {
         div.innerHTML = `
             <div><strong>${escapeHtml(t.name)}</strong></div>
             <div class="tag-actions">
-                <button onclick="showTemplateEditor('${t.id}')" style="border:none; background:none; color:#2196f3; cursor:pointer;"><span class="material-symbols-outlined">edit</span></button>
-                <button onclick="deleteTemplate('${t.id}')" style="border:none; background:none; color:#e57373; cursor:pointer;"><span class="material-symbols-outlined">delete</span></button>
+                <button onclick="showTemplateEditor('${t.id}')" style="border:none; background:none; color:#2196f3; cursor:pointer;"><span class="material-symbols-outlined" style="font-size:16px;">edit</span></button>
+                <button onclick="deleteTemplate('${t.id}')" style="border:none; background:none; color:#e57373; cursor:pointer;"><span class="material-symbols-outlined" style="font-size:16px;">delete</span></button>
             </div>
         `;
         list.appendChild(div);
@@ -748,7 +771,7 @@ function renderTemplateTree() {
             row.innerHTML = `
                 <input type="text" value="${escapeHtml(node.text)}" 
                     onchange="updateTemplateNodeText('${currentPath.join(',')}', this.value)"
-                    style="flex:1; padding:5px; border:1px solid #ddd; border-radius:3px;">
+                    style="flex:1; padding:5px; border:1px solid #ddd; border-radius:3px; font-size:13px;">
                 <button title="Add Sub-step" onclick="addTemplateSubNode('${currentPath.join(',')}')" style="border:none; background:#e3f2fd; color:#2196f3; cursor:pointer; border-radius:3px; padding:0 5px;">+</button>
                 <button title="Delete" onclick="deleteTemplateNode('${currentPath.join(',')}')" style="border:none; background:#ffebee; color:#e57373; cursor:pointer; border-radius:3px; padding:0 5px;">&times;</button>
             `;
@@ -1155,28 +1178,49 @@ function getTaskByPath(cardIndex, path) {
 
 function calculateProgress(task) {
     let total = 0;
-    let done = 0;
+    let score = 0;
     function traverse(node) {
         if (node.subtasks && node.subtasks.length > 0) {
             node.subtasks.forEach(t => traverse(t));
         }
         total++;
-        if(node.done) done++;
+        if(node.status === 'done') score += 1;
+        else if(node.status === 'doing') score += 0.5;
     }
     if(task.subtasks) task.subtasks.forEach(t => traverse(t));
-    return total === 0 ? 0 : (done/total)*100;
+    return total === 0 ? 0 : (score/total)*100;
 }
 
 function calculateCardProgress(card) {
     let total = 0;
-    let done = 0;
+    let score = 0;
     function traverse(node) {
         total++;
-        if(node.done) done++;
+        if(node.status === 'done') score += 1;
+        else if(node.status === 'doing') score += 0.5;
         if(node.subtasks) node.subtasks.forEach(traverse);
     }
     card.tasks.forEach(traverse);
-    return total === 0 ? 0 : (done/total)*100;
+    return total === 0 ? 0 : (score/total)*100;
+}
+
+function getStatusIcon(status) {
+    if(status === 'done') return 'check_circle';
+    if(status === 'doing') return 'timelapse';
+    return 'radio_button_unchecked';
+}
+
+function cycleTaskStatus(cardIndex, pathStr) {
+    const path = pathStr.split(',').map(Number);
+    const task = getTaskByPath(cardIndex, path);
+    
+    if(!task.status || task.status === 'todo') task.status = 'doing';
+    else if(task.status === 'doing') task.status = 'done';
+    else task.status = 'todo';
+    
+    task.done = (task.status === 'done'); // Sync legacy
+    localStorage.setItem('simpList-data', JSON.stringify(cards));
+    renderCards();
 }
 
 function moveTask(srcCardIdx, srcPath, destCardIdx, destPath, position) {
@@ -1260,6 +1304,17 @@ function renderCards() {
   container.innerHTML = '';
   
   cards.forEach((card, cardIndex) => {
+    // Migration: If legacy 'done' exists but no status, convert
+    if(card.tasks) {
+        const migrate = (list) => {
+            list.forEach(t => {
+                if(!t.status) t.status = t.done ? 'done' : 'todo';
+                if(t.subtasks) migrate(t.subtasks);
+            });
+        };
+        migrate(card.tasks);
+    }
+
     const cardDiv = document.createElement('div');
     cardDiv.className = 'card-mat';
     
@@ -1374,7 +1429,6 @@ function renderCards() {
             };
             
             nodeDiv.ondragleave = (e) => {
-                // Prevent flicker when hovering inner elements
                 if(nodeDiv.contains(e.relatedTarget)) return;
                 nodeDiv.classList.remove('drop-above', 'drop-below', 'drop-inside');
             };
@@ -1424,14 +1478,14 @@ function renderCards() {
                 chevron.className += ' collapse-placeholder';
             }
 
-            const checkbox = document.createElement('input');
-            checkbox.type = 'checkbox';
-            checkbox.className = 'task-checkbox';
-            checkbox.checked = task.done;
-            checkbox.onchange = () => toggleTask(cardIndex, pathStr);
+            // STATUS ICON (Tri-State)
+            const statusIcon = document.createElement('span');
+            statusIcon.className = 'material-symbols-outlined task-status-icon status-' + (task.status || 'todo');
+            statusIcon.innerText = getStatusIcon(task.status);
+            statusIcon.onclick = () => cycleTaskStatus(cardIndex, pathStr);
             
             const span = document.createElement('span');
-            span.className = 'task-text ' + (task.done ? 'task-done' : '');
+            span.className = 'task-text ' + (task.status==='done' ? 'task-done' : '');
             span.contentEditable = true;
             span.textContent = task.text;
             span.onblur = (e) => updateTaskText(cardIndex, pathStr, e.target.innerText);
@@ -1439,7 +1493,7 @@ function renderCards() {
             const dateInput = document.createElement('input');
             dateInput.type = 'date';
             const dStatus = getDateStatus(task.due);
-            dateInput.className = 'date-input ' + (!task.done ? dStatus : '');
+            dateInput.className = 'date-input ' + (task.status!=='done' ? dStatus : '');
             dateInput.value = task.due || '';
             dateInput.onchange = (e) => updateTaskDate(cardIndex, pathStr, e.target.value);
             
@@ -1456,7 +1510,7 @@ function renderCards() {
             
             row.appendChild(taskHandle); 
             row.appendChild(chevron);
-            row.appendChild(checkbox);
+            row.appendChild(statusIcon);
             row.appendChild(span);
             if(task.subtasks && task.subtasks.length > 0 && nodePct < 100) {
                  const barTrack = document.createElement('div');
@@ -1574,7 +1628,7 @@ function deleteListHelper() {
 // --- Task Functions ---
 function addTask(cardIndex, input) {
   if(!input.value.trim()) return;
-  cards[cardIndex].tasks.push({ text: input.value, done: false, due:'', subtasks: [], collapsed: false });
+  cards[cardIndex].tasks.push({ text: input.value, status:'todo', done: false, due:'', subtasks: [], collapsed: false });
   input.value = '';
   renderCards();
   setTimeout(() => {
@@ -1586,6 +1640,7 @@ function addTask(cardIndex, input) {
 function cloneTask(task) {
     return {
         text: task.text,
+        status: 'todo',
         done: false,
         due: '',
         collapsed: false,
@@ -1600,6 +1655,7 @@ function insertTemplateTask(cardIndex, tplId) {
     const taskName = input.value.trim() || tpl.name;
     const newTask = {
         text: taskName,
+        status: 'todo',
         done: false,
         due: '',
         collapsed: false,
@@ -1611,10 +1667,8 @@ function insertTemplateTask(cardIndex, tplId) {
 }
 
 function toggleTask(cardIndex, pathStr) {
-    const path = pathStr.split(',').map(Number);
-    const task = getTaskByPath(cardIndex, path);
-    task.done = !task.done;
-    renderCards();
+    // Legacy checkbox handler if any
+    cycleTaskStatus(cardIndex, pathStr);
 }
 function updateTaskText(cardIndex, pathStr, val) {
     const path = pathStr.split(',').map(Number);
@@ -1632,13 +1686,14 @@ function toggleTaskCollapse(cardIndex, pathStr) {
     const path = pathStr.split(',').map(Number);
     const task = getTaskByPath(cardIndex, path);
     task.collapsed = !task.collapsed;
+    localStorage.setItem('simpList-data', JSON.stringify(cards)); // Save state
     renderCards();
 }
 function addSubtask(cardIndex, pathStr) {
     const path = pathStr.split(',').map(Number);
     const task = getTaskByPath(cardIndex, path);
     if(!task.subtasks) task.subtasks = [];
-    task.subtasks.push({ text: "New Step", done: false, due: '', collapsed: false, subtasks: [] });
+    task.subtasks.push({ text: "New Step", status:'todo', done: false, due: '', collapsed: false, subtasks: [] });
     task.collapsed = false; 
     renderCards();
 }
