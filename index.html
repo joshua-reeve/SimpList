@@ -2,11 +2,11 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>SimpList + Clipboard Manager</title>
+  <title>Simplist</title>
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" />
   <style>
-    /* --- SimpList Base Styles (COMPACT MODE) --- */
+    /* --- Simplist Base Styles (COMPACT MODE) --- */
     body {
       font-family: 'Segoe UI', Arial, sans-serif;
       background: #f5f5f5;
@@ -225,7 +225,7 @@
     }
     .copy-box:hover .tooltip { visibility: visible; opacity: 1; }
 
-    /* --- SimpList Task Styles --- */
+    /* --- Simplist Task Styles --- */
     .card-list { 
         display: flex; 
         flex-direction: column; 
@@ -333,7 +333,7 @@
 
 <div class="topbar">
   <span class="material-symbols-outlined" style="font-size: 22px;">checklist</span>
-  <h1>SimpList</h1>
+  <h1>Simplist</h1>
   <div class="spacer"></div>
   <button class="icon-btn" onclick="exportData()" title="Export Data"><span class="material-symbols-outlined">download</span></button>
   <button class="icon-btn" onclick="document.getElementById('file-upload').click()" title="Import Data"><span class="material-symbols-outlined">upload</span></button>
@@ -574,15 +574,15 @@ let customTags = JSON.parse(localStorage.getItem('customTags')) || [
     {name: '[MyName]', value: 'Your Name'},
     {name: '[Phone]', value: '555-0199'}
 ];
-let cards = JSON.parse(localStorage.getItem('simpList-data')) || [
-  { id: '1', title: 'To Do', color:'#673ab7', tasks: [{text: 'Welcome to SimpList!', status:'todo', due:'', subtasks:[]}] }
+let cards = JSON.parse(localStorage.getItem('simplist-data')) || [
+  { id: '1', title: 'To Do', color:'#673ab7', tasks: [{text: 'Welcome to Simplist!', status:'todo', due:'', subtasks:[]}] }
 ];
 // Ensure card collapsed state exists
 if(Array.isArray(cards)) {
     cards.forEach(c => { if(c.collapsed === undefined) c.collapsed = false; });
 }
 
-let taskTemplates = JSON.parse(localStorage.getItem('simpList-templates')) || [];
+let taskTemplates = JSON.parse(localStorage.getItem('simplist-templates')) || [];
 
 let currentTemplateTree = []; 
 
@@ -826,13 +826,13 @@ function saveTemplate() {
         });
     }
     
-    localStorage.setItem('simpList-templates', JSON.stringify(taskTemplates));
+    localStorage.setItem('simplist-templates', JSON.stringify(taskTemplates));
     showTemplateList();
 }
 function deleteTemplate(id) {
     if(confirm('Delete template?')) {
         taskTemplates = taskTemplates.filter(t => t.id !== id);
-        localStorage.setItem('simpList-templates', JSON.stringify(taskTemplates));
+        localStorage.setItem('simplist-templates', JSON.stringify(taskTemplates));
         showTemplateList();
     }
 }
@@ -1219,7 +1219,7 @@ function cycleTaskStatus(cardIndex, pathStr) {
     else task.status = 'todo';
     
     task.done = (task.status === 'done'); // Sync legacy
-    localStorage.setItem('simpList-data', JSON.stringify(cards));
+    localStorage.setItem('simplist-data', JSON.stringify(cards));
     renderCards();
 }
 
@@ -1294,7 +1294,7 @@ function moveTask(srcCardIdx, srcPath, destCardIdx, destPath, position) {
     }
     sweep(cards[srcCardIdx].tasks);
     
-    localStorage.setItem('simpList-data', JSON.stringify(cards));
+    localStorage.setItem('simplist-data', JSON.stringify(cards));
     renderCards();
 }
 
@@ -1328,7 +1328,7 @@ function renderCards() {
         if(dragType === 'card' && dragSrcCardIndex !== cardIndex) {
             const item = cards.splice(dragSrcCardIndex, 1)[0];
             cards.splice(cardIndex, 0, item);
-            localStorage.setItem('simpList-data', JSON.stringify(cards));
+            localStorage.setItem('simplist-data', JSON.stringify(cards));
             renderCards();
         }
         if(dragType === 'task') {
@@ -1386,7 +1386,7 @@ function renderCards() {
         if(!e.target.closest('.drag-handle') && !e.target.closest('button')) {
             cardDiv.classList.toggle('collapsed');
             card.collapsed = cardDiv.classList.contains('collapsed');
-            localStorage.setItem('simpList-data', JSON.stringify(cards));
+            localStorage.setItem('simplist-data', JSON.stringify(cards));
         }
     };
     
@@ -1573,7 +1573,7 @@ function renderCards() {
           document.querySelectorAll('.mini-menu').forEach(el => el.style.display = 'none');
       }
   };
-  localStorage.setItem('simpList-data', JSON.stringify(cards));
+  localStorage.setItem('simplist-data', JSON.stringify(cards));
 }
 
 // --- List Modal ---
@@ -1674,7 +1674,7 @@ function updateTaskText(cardIndex, pathStr, val) {
     const path = pathStr.split(',').map(Number);
     const task = getTaskByPath(cardIndex, path);
     task.text = val;
-    localStorage.setItem('simpList-data', JSON.stringify(cards));
+    localStorage.setItem('simplist-data', JSON.stringify(cards));
 }
 function updateTaskDate(cardIndex, pathStr, val) {
     const path = pathStr.split(',').map(Number);
@@ -1686,7 +1686,7 @@ function toggleTaskCollapse(cardIndex, pathStr) {
     const path = pathStr.split(',').map(Number);
     const task = getTaskByPath(cardIndex, path);
     task.collapsed = !task.collapsed;
-    localStorage.setItem('simpList-data', JSON.stringify(cards)); // Save state
+    localStorage.setItem('simplist-data', JSON.stringify(cards)); // Save state
     renderCards();
 }
 function addSubtask(cardIndex, pathStr) {
@@ -1723,7 +1723,7 @@ function exportData() {
   const url = URL.createObjectURL(blob);
   const a = document.createElement('a');
   a.href = url;
-  a.download = 'simpList_complete_backup.json';
+  a.download = 'simplist_complete_backup.json';
   a.click();
 }
 
@@ -1741,7 +1741,7 @@ document.getElementById('file-upload').addEventListener('change', function(e) {
       
       saveButtonFolders();
       localStorage.setItem('customTags', JSON.stringify(customTags));
-      localStorage.setItem('simpList-templates', JSON.stringify(taskTemplates));
+      localStorage.setItem('simplist-templates', JSON.stringify(taskTemplates));
       renderCards();
       alert('Import successful!');
     } catch(err) {
