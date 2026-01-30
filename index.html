@@ -12,15 +12,15 @@
       background: #f5f5f5;
       margin: 0;
       min-height: 100vh;
-      font-size: 13px; /* Reduced from 16px/default */
+      font-size: 13px;
     }
     .topbar {
       display: flex;
       align-items: center;
       background: #2196F3;
       color: white;
-      padding: 0 12px; /* Reduced padding */
-      height: 40px;    /* Reduced height from 48px */
+      padding: 0 12px;
+      height: 40px;
       box-shadow: 0 2px 4px rgba(0,0,0,.08);
       gap: 8px;
     }
@@ -31,7 +31,7 @@
       border: none;
       color: inherit;
       cursor: pointer;
-      font-size: 20px; /* Smaller icons */
+      font-size: 20px;
       padding: 6px;
       border-radius: 50%;
       transition: background 0.15s;
@@ -42,7 +42,7 @@
     .topbar .icon-btn:hover { background: rgba(255,255,255,0.15); }
 
     .container {
-      padding: 15px 10px; /* Tighter padding */
+      padding: 15px 10px;
       max-width: 1200px;
       margin: 0 auto;
     }
@@ -63,7 +63,7 @@
     }
     .search-input {
       flex: 1;
-      padding: 6px 12px; /* Compact input */
+      padding: 6px 12px;
       border: 1px solid #ddd;
       border-radius: 20px;
       outline: none;
@@ -79,7 +79,7 @@
     .folder-div, .card-mat {
       background: #fff;
       border-radius: 6px;
-      margin-bottom: 8px; /* Reduced margin (50% closer) */
+      margin-bottom: 8px;
       overflow: visible; 
       box-shadow: 0 1px 3px rgba(0,0,0,0.05);
       border: 1px solid rgba(0,0,0,0.1);
@@ -87,7 +87,6 @@
       transition: transform 0.2s, opacity 0.2s;
     }
     
-    /* Dragging Visuals */
     .folder-div.dragging, .card-mat.dragging {
       opacity: 0.4;
       border: 2px dashed #2196f3;
@@ -98,7 +97,7 @@
     }
 
     .folder-header, .card-header {
-      padding: 6px 10px; /* Tighter header */
+      padding: 6px 10px;
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -133,7 +132,7 @@
     .controls button:hover { background: rgba(255,255,255,0.5); }
     
     .buttons-list, .card-content {
-      padding: 8px; /* Reduced content padding */
+      padding: 8px;
       background: #fff;
       border-radius: 0 0 5px 5px;
     }
@@ -146,7 +145,7 @@
     .buttons-list {
        display: flex;
        flex-wrap: wrap;
-       gap: 6px; /* Tighter buttons */
+       gap: 6px;
        background: #f9f9f9; 
        min-height: 30px; 
     }
@@ -169,7 +168,7 @@
     
     .copy-box {
       position: relative;
-      padding: 5px 10px; /* Smaller copy buttons */
+      padding: 5px 10px;
       border-radius: 15px;
       cursor: pointer;
       border: 1px solid rgba(0,0,0,0.05);
@@ -229,13 +228,13 @@
     .card-list { 
         display: flex; 
         flex-direction: column; 
-        gap: 10px; /* 50% Closer task lists (was 20px) */
+        gap: 10px; 
     }
     .task-list { list-style: none; padding: 0; margin: 0; min-height: 15px; }
     
     .task-node { 
         border-bottom: 1px solid #f0f0f0; 
-        padding: 4px 0; /* Tighter rows */
+        padding: 4px 0;
         border: 2px solid transparent; 
         border-radius: 4px;
         transition: border-color 0.1s, background-color 0.1s;
@@ -249,11 +248,11 @@
     .task-children.hidden { display: none; }
     .task-row { display: flex; align-items: center; gap: 6px; padding: 2px 0; }
     
-    /* STATUS ICONS (Compact) */
+    /* STATUS ICONS */
     .task-status-icon { 
         cursor: pointer; 
         user-select: none; 
-        font-size: 18px; /* Smaller icon */
+        font-size: 18px; 
         width: 18px; height: 18px;
         transition: color 0.2s, transform 0.1s;
     }
@@ -277,7 +276,52 @@
     .action-btn { color: #ccc; cursor: pointer; font-size: 16px; user-select: none; }
     .action-btn:hover { color: #2196f3; }
     .action-btn.delete:hover { color: #e57373; }
+    .action-btn.has-note { color: #2196f3; }
     
+    /* RICH TEXT EDITOR */
+    .task-note-block {
+        margin-left: 44px;
+        margin-right: 10px;
+        margin-top: 4px;
+        margin-bottom: 8px;
+        background: #fafafa;
+        border: 1px solid #eee;
+        border-radius: 4px;
+        animation: fadeIn 0.2s;
+    }
+    .rte-toolbar {
+        display: flex;
+        background: #f0f0f0;
+        border-bottom: 1px solid #ddd;
+        padding: 2px;
+        border-radius: 4px 4px 0 0;
+        gap: 2px;
+    }
+    .rte-btn {
+        background: none;
+        border: none;
+        cursor: pointer;
+        padding: 2px 6px;
+        font-size: 12px;
+        font-weight: bold;
+        color: #555;
+        border-radius: 2px;
+    }
+    .rte-btn:hover { background: #e0e0e0; color: #000; }
+    .rte-editor {
+        width: 100%;
+        min-height: 40px;
+        padding: 8px;
+        font-family: inherit;
+        font-size: 12px;
+        outline: none;
+        color: #333;
+        box-sizing: border-box;
+        line-height: 1.4;
+    }
+    .rte-editor ul { padding-left: 20px; margin: 4px 0; }
+    .rte-editor:focus { background: #fff; }
+
     .collapse-icon { cursor: pointer; font-size: 18px; color: #999; user-select: none; width: 18px; display: inline-flex; justify-content: center; }
     .collapse-icon:hover { color: #555; }
     .collapse-placeholder { width: 18px; }
@@ -288,20 +332,12 @@
     .template-picker-btn { background: #e3f2fd; color: #2196f3; border: none; border-radius: 4px; cursor: pointer; padding: 0 8px; display: flex; align-items: center; justify-content: center; }
     .template-picker-btn:hover { background: #bbdefb; }
     
-    /* Drag Handle Styles (Compact) */
+    /* Drag Handle Styles */
     .drag-handle { cursor: grab; margin-right: 4px; color: rgba(0,0,0,0.2); font-size: 18px; user-select: none; }
     .drag-handle:hover { color: rgba(0,0,0,0.4); }
     .drag-handle:active { cursor: grabbing; }
-    
     .card-drag-handle { cursor: grab; } 
-    
-    .task-drag-handle { 
-        cursor: grab; 
-        color: #ddd; 
-        font-size: 16px; 
-        margin-right: 2px; 
-        user-select: none;
-    }
+    .task-drag-handle { cursor: grab; color: #ddd; font-size: 16px; margin-right: 2px; user-select: none; }
     .task-drag-handle:hover { color: #999; }
     .task-drag-handle:active { cursor: grabbing; color: #2196f3; }
 
@@ -341,7 +377,6 @@
 </div>
 
 <div class="container">
-  
   <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:12px; margin-top:15px;">
     <h2 style="margin:0; font-size:1.2rem; color:#444;">Task Lists</h2>
     <div style="display:flex; gap:8px;">
@@ -356,8 +391,7 @@
       <input type="text" id="task-search" class="search-input" placeholder="Search tasks..." onkeyup="renderCards()">
   </div>
   
-  <div class="card-list" id="card-list">
-    </div>
+  <div class="card-list" id="card-list"></div>
 
   <div id="custom-buttons-section">
     <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:12px;">
@@ -369,33 +403,21 @@
         <button class="btn-primary" onclick="openFolderModal(null)">+ New Folder</button>
       </div>
     </div>
-    
     <div class="search-row">
       <input type="text" id="button-search" class="search-input" placeholder="Search buttons..." onkeyup="renderButtonFolders()">
     </div>
-
     <div id="folders-container"></div>
   </div>
-
 </div>
 
 <div id="folder-modal" class="modal-overlay">
   <div class="modal">
     <h3 id="folder-modal-title" style="margin-top:0; font-size:1.2rem;">Folder Settings</h3>
-    <div class="input-group">
-      <label>Folder Name</label>
-      <input type="text" id="folder-name-input" placeholder="e.g. Work Emails">
-    </div>
-    <div class="input-group">
-      <label>Folder Color</label>
-      <input type="color" id="folder-color-input" value="#2196f3">
-    </div>
+    <div class="input-group"><label>Folder Name</label><input type="text" id="folder-name-input"></div>
+    <div class="input-group"><label>Folder Color</label><input type="color" id="folder-color-input" value="#2196f3"></div>
     <div class="modal-actions">
-       <button id="folder-delete-btn" class="btn-danger" style="display:none;" onclick="deleteFolderHelper()">Delete Folder</button>
-       <div class="modal-actions-right">
-          <button class="btn-secondary" onclick="closeFolderModal()">Cancel</button>
-          <button class="btn-primary" onclick="saveFolder()">Save</button>
-       </div>
+       <button id="folder-delete-btn" class="btn-danger" style="display:none;" onclick="deleteFolderHelper()">Delete</button>
+       <div class="modal-actions-right"><button class="btn-secondary" onclick="closeFolderModal()">Cancel</button><button class="btn-primary" onclick="saveFolder()">Save</button></div>
     </div>
   </div>
 </div>
@@ -403,20 +425,11 @@
 <div id="list-modal" class="modal-overlay">
   <div class="modal">
     <h3 id="list-modal-title" style="margin-top:0; font-size:1.2rem;">List Settings</h3>
-    <div class="input-group">
-      <label>List Name</label>
-      <input type="text" id="list-name-input" placeholder="e.g. Shopping List">
-    </div>
-    <div class="input-group">
-      <label>List Header Color</label>
-      <input type="color" id="list-color-input" value="#673ab7">
-    </div>
+    <div class="input-group"><label>List Name</label><input type="text" id="list-name-input"></div>
+    <div class="input-group"><label>List Header Color</label><input type="color" id="list-color-input" value="#673ab7"></div>
     <div class="modal-actions">
-       <button id="list-delete-btn" class="btn-danger" style="display:none;" onclick="deleteListHelper()">Delete List</button>
-       <div class="modal-actions-right">
-          <button class="btn-secondary" onclick="closeListModal()">Cancel</button>
-          <button class="btn-primary" onclick="saveList()">Save</button>
-       </div>
+       <button id="list-delete-btn" class="btn-danger" style="display:none;" onclick="deleteListHelper()">Delete</button>
+       <div class="modal-actions-right"><button class="btn-secondary" onclick="closeListModal()">Cancel</button><button class="btn-primary" onclick="saveList()">Save</button></div>
     </div>
   </div>
 </div>
@@ -424,30 +437,18 @@
 <div id="btn-modal" class="modal-overlay">
   <div class="modal">
     <h3 id="btn-modal-title" style="margin-top:0; font-size:1.2rem;">Add Copy Button</h3>
+    <div class="input-group"><label>Button Label</label><input type="text" id="btn-label-input"></div>
     <div class="input-group">
-      <label>Button Label</label>
-      <input type="text" id="btn-label-input" placeholder="e.g. Appointment Reminder">
-    </div>
-    <div class="input-group">
-      <label>Message Content</label>
-      <textarea id="btn-content-input" rows="4" placeholder="Text to copy..."></textarea>
-      <div style="display:flex; justify-content:space-between; align-items:center; margin-top:4px;">
-        <small style="color:#666;">Supports [Date], [Time] and Custom Tags.</small>
-        <select id="tag-inserter" style="font-size:11px; padding:2px;" onchange="insertTagIntoMessage(this)">
-            <option value="">+ Insert Tag</option>
-        </select>
+      <label>Message Content</label><textarea id="btn-content-input" rows="4"></textarea>
+      <div style="display:flex; justify-content:space-between; margin-top:4px;">
+        <small style="color:#666;">Supports [Date], [Time], Tags</small>
+        <select id="tag-inserter" style="font-size:11px; padding:2px;" onchange="insertTagIntoMessage(this)"><option value="">+ Insert Tag</option></select>
       </div>
     </div>
-    <div class="input-group">
-      <label>Button Color</label>
-      <input type="color" id="btn-color-input" value="#2196f3">
-    </div>
+    <div class="input-group"><label>Button Color</label><input type="color" id="btn-color-input" value="#2196f3"></div>
     <div class="modal-actions">
       <button id="btn-delete-btn" class="btn-danger" style="display:none;" onclick="deleteButtonHelper()">Delete</button>
-      <div class="modal-actions-right">
-        <button class="btn-secondary" onclick="closeBtnModal()">Cancel</button>
-        <button class="btn-primary" onclick="saveButton()">Save</button>
-      </div>
+      <div class="modal-actions-right"><button class="btn-secondary" onclick="closeBtnModal()">Cancel</button><button class="btn-primary" onclick="saveButton()">Save</button></div>
     </div>
   </div>
 </div>
@@ -455,1306 +456,354 @@
 <div id="tags-modal" class="modal-overlay">
     <div class="modal">
       <h3 style="margin-top:0; font-size:1.2rem;">Manage Custom Tags</h3>
-      <p style="font-size:12px; color:#666; margin-top:-8px;">Tags will be replaced in your messages automatically.</p>
-      
       <div id="tags-list" class="tags-list-container"></div>
-      
       <div style="border-top:1px solid #eee; padding-top:12px;">
           <h4 id="tag-form-title" style="margin:0 0 8px 0; font-size:13px;">Add New Tag</h4>
-          <div style="display:flex; gap:8px; margin-bottom:8px;">
-              <input type="text" id="new-tag-key" placeholder="Tag (e.g. [Name])" style="flex:1;">
-              <input type="text" id="new-tag-val" placeholder="Value (e.g. John)" style="flex:1;">
-          </div>
-          <div style="display:flex; gap:5px;">
-            <button id="tag-cancel-btn" class="btn-secondary" style="display:none; flex:1;" onclick="cancelEditTag()">Cancel</button>
-            <button id="tag-save-btn" class="btn-primary" style="flex:1;" onclick="saveCustomTag()">Add Tag</button>
-          </div>
+          <div style="display:flex; gap:8px; margin-bottom:8px;"><input type="text" id="new-tag-key" placeholder="Tag" style="flex:1;"><input type="text" id="new-tag-val" placeholder="Value" style="flex:1;"></div>
+          <div style="display:flex; gap:5px;"><button id="tag-cancel-btn" class="btn-secondary" style="display:none; flex:1;" onclick="cancelEditTag()">Cancel</button><button id="tag-save-btn" class="btn-primary" style="flex:1;" onclick="saveCustomTag()">Add Tag</button></div>
       </div>
-  
-      <div class="modal-actions">
-        <button class="btn-secondary" onclick="closeTagsModal()">Close</button>
-      </div>
+      <div class="modal-actions"><button class="btn-secondary" onclick="closeTagsModal()">Close</button></div>
     </div>
 </div>
 
 <div id="template-modal" class="modal-overlay">
     <div class="modal">
         <h3 style="margin-top:0; font-size:1.2rem;">Task Templates</h3>
-        <p style="font-size:12px; color:#666; margin-top:-8px;">Create templates to quickly add tasks with deep structure.</p>
-
         <div id="tpl-list-view">
             <div id="tpl-list" class="tags-list-container" style="min-height:150px;"></div>
             <button class="btn-primary" style="width:100%; margin-top:8px;" onclick="showTemplateEditor(null)">+ Create New Template</button>
         </div>
-
         <div id="tpl-editor-view" style="display:none;">
-            <div class="input-group">
-                <label>Template Name (Task Title)</label>
-                <input type="text" id="tpl-name-input" placeholder="e.g. New Client Onboarding">
-            </div>
-            
+            <div class="input-group"><label>Template Name</label><input type="text" id="tpl-name-input"></div>
             <label style="display:block; margin-bottom:4px; font-weight:500; color:#555; font-size:12px;">Template Structure</label>
-            <div id="tpl-tree-container" class="tags-list-container" style="max-height:220px; background:#fafafa; border:1px solid #ddd;">
-                </div>
+            <div id="tpl-tree-container" class="tags-list-container" style="max-height:220px; background:#fafafa; border:1px solid #ddd;"></div>
             <button class="btn-secondary" style="width:100%; margin-top:5px; font-size:12px;" onclick="addRootTemplateItem()">+ Add Step</button>
-
-            <div class="modal-actions">
-                <button class="btn-secondary" onclick="showTemplateList()">Back</button>
-                <button class="btn-primary" onclick="saveTemplate()">Save Template</button>
-            </div>
+            <div class="modal-actions"><button class="btn-secondary" onclick="showTemplateList()">Back</button><button class="btn-primary" onclick="saveTemplate()">Save Template</button></div>
         </div>
-
-        <div class="modal-actions" id="tpl-main-actions">
-            <button class="btn-secondary" onclick="closeTemplateManager()">Close</button>
-        </div>
+        <div class="modal-actions" id="tpl-main-actions"><button class="btn-secondary" onclick="closeTemplateManager()">Close</button></div>
     </div>
 </div>
 
 <script>
-/**
- * --- PART 1: UTILITIES ---
- */
+// --- UTILITIES ---
 function getContrastYIQ(hexcolor){
-    if (!hexcolor) return 'white';
-    if(hexcolor.length === 4) { 
-        hexcolor = '#' + hexcolor[1] + hexcolor[1] + hexcolor[2] + hexcolor[2] + hexcolor[3] + hexcolor[3];
-    }
-    var r = parseInt(hexcolor.substr(1,2),16);
-    var g = parseInt(hexcolor.substr(3,2),16);
-    var b = parseInt(hexcolor.substr(5,2),16);
-    var yiq = ((r*299)+(g*587)+(b*114))/1000;
-    return (yiq >= 128) ? '#212121' : 'white';
+    if(!hexcolor) return 'white';
+    if(hexcolor.length === 4) hexcolor='#'+hexcolor[1]+hexcolor[1]+hexcolor[2]+hexcolor[2]+hexcolor[3]+hexcolor[3];
+    var r=parseInt(hexcolor.substr(1,2),16),g=parseInt(hexcolor.substr(3,2),16),b=parseInt(hexcolor.substr(5,2),16);
+    return ((r*299)+(g*587)+(b*114))/1000 >= 128 ? '#212121':'white';
 }
-
-function escapeHtml(text) {
-  if(!text) return '';
-  return text.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;").replace(/'/g, "&#039;");
+function escapeHtml(text){ if(!text)return ''; return text.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;").replace(/'/g,"&#039;"); }
+function escapeRegExp(string){ return string.replace(/[.*+?^${}()|[\]\\]/g,'\\$&'); }
+function replaceTags(text){
+  const now=new Date();
+  let res=text.replace(/\[Date\]/gi, now.toLocaleDateString()).replace(/\[Time\]/gi, now.toLocaleTimeString([],{hour:'2-digit',minute:'2-digit'}));
+  customTags.forEach(t=>{ res=res.replace(new RegExp(escapeRegExp(t.name),'gi'), t.value); });
+  return res;
 }
-
-function escapeRegExp(string) {
-  return string.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'); 
-}
-
-function replaceTags(text) {
-  const now = new Date();
-  const dateStr = now.toLocaleDateString();
-  const timeStr = now.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'});
-  let result = text.replace(/\[Date\]/gi, dateStr).replace(/\[Time\]/gi, timeStr);
-  customTags.forEach(tag => {
-      const regex = new RegExp(escapeRegExp(tag.name), 'gi');
-      result = result.replace(regex, tag.value);
-  });
-  return result;
-}
-
-function getDateStatus(dateStr) {
+function getDateStatus(dateStr){
     if(!dateStr) return '';
-    const today = new Date();
-    today.setHours(0,0,0,0);
-    const due = new Date(dateStr + "T00:00:00");
-    const diffTime = due - today;
-    const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24)); 
-    if (diffDays < 0) return 'overdue';
-    if (diffDays >= 0 && diffDays <= 7) return 'upcoming';
+    const today=new Date(); today.setHours(0,0,0,0);
+    const due=new Date(dateStr+"T00:00:00");
+    const diffDays=Math.ceil((due-today)/(1000*60*60*24));
+    if(diffDays<0) return 'overdue';
+    if(diffDays>=0 && diffDays<=7) return 'upcoming';
     return '';
 }
+function formatRichText(cmd, value=null) { document.execCommand(cmd, false, value); }
 
-/**
- * --- PART 2: DATA & STATE ---
- */
-// Data Fix: Ensure folders array exists and check for saved collapsed state
+// --- DATA ---
 let buttonFolders = JSON.parse(localStorage.getItem('foldersV2')) || [];
-if(Array.isArray(buttonFolders)) {
-    buttonFolders.forEach(f => {
-        if(f.collapsed === undefined) f.collapsed = false;
-    });
-}
+if(Array.isArray(buttonFolders)) buttonFolders.forEach(f=>{if(f.collapsed===undefined)f.collapsed=false;});
+let customTags = JSON.parse(localStorage.getItem('customTags')) || [{name:'[MyName]',value:'Your Name'}];
+let cards = JSON.parse(localStorage.getItem('simpList-data')) || [{id:'1',title:'To Do',color:'#673ab7',tasks:[{text:'Welcome to Simplist!',status:'todo',due:'',note:'',subtasks:[]}]}];
+if(Array.isArray(cards)) cards.forEach(c=>{if(c.collapsed===undefined)c.collapsed=false;});
+let taskTemplates = JSON.parse(localStorage.getItem('simpList-templates')) || [];
+let currentTemplateTree=[];
 
-let customTags = JSON.parse(localStorage.getItem('customTags')) || [
-    {name: '[MyName]', value: 'Your Name'},
-    {name: '[Phone]', value: '555-0199'}
-];
-let cards = JSON.parse(localStorage.getItem('simplist-data')) || [
-  { id: '1', title: 'To Do', color:'#673ab7', tasks: [{text: 'Welcome to Simplist!', status:'todo', due:'', subtasks:[]}] }
-];
-// Ensure card collapsed state exists
-if(Array.isArray(cards)) {
-    cards.forEach(c => { if(c.collapsed === undefined) c.collapsed = false; });
-}
+// --- STATE ---
+let editingFolderId=null, editingBtnIndex=null, targetFolderId=null, editingTagIndex=null, editingListId=null, editingTemplateId=null;
+let dragSrcIndex=null, dragType=null, dragSrcFolderIndex=null, dragSrcButtonIndex=null, dragSrcTaskPath=null, dragSrcCardIndex=null;
 
-let taskTemplates = JSON.parse(localStorage.getItem('simplist-templates')) || [];
-
-let currentTemplateTree = []; 
-
-// Modals State
-let editingFolderId = null; 
-let editingBtnIndex = null;
-let targetFolderId = null; 
-let editingTagIndex = null;
-let editingListId = null; 
-let editingTemplateId = null;
-
-// Drag State
-let dragSrcIndex = null; // For cards
-let dragType = null; // 'card', 'folder', 'button', 'task'
-let dragSrcFolderIndex = null;
-let dragSrcButtonIndex = null;
-let dragSrcTaskPath = null;
-let dragSrcCardIndex = null;
-
-/**
- * --- PART 3: TAGS MANAGER ---
- */
-function openTagsModal() {
-    renderTagsList();
-    cancelEditTag(); 
-    document.getElementById('tags-modal').style.display = 'flex';
-}
-function closeTagsModal() {
-    document.getElementById('tags-modal').style.display = 'none';
-}
-function renderTagsList() {
-    const list = document.getElementById('tags-list');
-    list.innerHTML = '';
-    if(customTags.length === 0) {
-        list.innerHTML = '<div style="text-align:center; padding:20px; color:#999;">No custom tags yet.</div>';
-        return;
-    }
-    customTags.forEach((tag, idx) => {
-        const item = document.createElement('div');
-        item.className = 'tag-item';
-        if(idx === editingTagIndex) {
-            item.style.border = "1px solid #2196f3";
-            item.style.background = "#e3f2fd";
-        }
-        item.innerHTML = `
-            <div style="overflow:hidden;">
-                <span class="tag-key">${escapeHtml(tag.name)}</span>
-                <span>&rarr; ${escapeHtml(tag.value)}</span>
-            </div>
-            <div class="tag-actions">
-                <button onclick="editCustomTag(${idx})" title="Edit" style="border:none; background:none; color:#FFA000; cursor:pointer;">
-                    <span class="material-symbols-outlined" style="font-size:16px;">edit</span>
-                </button>
-                <button onclick="deleteCustomTag(${idx})" title="Delete" style="border:none; background:none; color:#e57373; cursor:pointer;">
-                    <span class="material-symbols-outlined" style="font-size:16px;">close</span>
-                </button>
-            </div>
-        `;
+// --- TAGS ---
+function openTagsModal(){ renderTagsList(); cancelEditTag(); document.getElementById('tags-modal').style.display='flex'; }
+function closeTagsModal(){ document.getElementById('tags-modal').style.display='none'; }
+function renderTagsList(){
+    const list=document.getElementById('tags-list'); list.innerHTML='';
+    if(customTags.length===0){ list.innerHTML='<div style="text-align:center;padding:10px;color:#999;">No custom tags.</div>'; return; }
+    customTags.forEach((t,i)=>{
+        const item=document.createElement('div'); item.className='tag-item';
+        if(i===editingTagIndex){ item.style.border="1px solid #2196f3"; item.style.background="#e3f2fd"; }
+        item.innerHTML=`<div><span class="tag-key">${escapeHtml(t.name)}</span> &rarr; ${escapeHtml(t.value)}</div><div class="tag-actions"><button onclick="editCustomTag(${i})" style="border:none;background:none;color:#FFA000;cursor:pointer;">✎</button><button onclick="deleteCustomTag(${i})" style="border:none;background:none;color:#e57373;cursor:pointer;">✕</button></div>`;
         list.appendChild(item);
     });
 }
-function editCustomTag(idx) {
-    editingTagIndex = idx;
-    const tag = customTags[idx];
-    document.getElementById('new-tag-key').value = tag.name;
-    document.getElementById('new-tag-val').value = tag.value;
-    document.getElementById('tag-form-title').innerText = "Edit Tag";
-    document.getElementById('tag-save-btn').innerText = "Update Tag";
-    document.getElementById('tag-cancel-btn').style.display = "inline-block";
-    renderTagsList(); 
+function editCustomTag(i){ editingTagIndex=i; document.getElementById('new-tag-key').value=customTags[i].name; document.getElementById('new-tag-val').value=customTags[i].value; document.getElementById('tag-form-title').innerText="Edit Tag"; document.getElementById('tag-save-btn').innerText="Update"; document.getElementById('tag-cancel-btn').style.display="inline-block"; renderTagsList(); }
+function cancelEditTag(){ editingTagIndex=null; document.getElementById('new-tag-key').value=''; document.getElementById('new-tag-val').value=''; document.getElementById('tag-form-title').innerText="Add New Tag"; document.getElementById('tag-save-btn').innerText="Add"; document.getElementById('tag-cancel-btn').style.display="none"; renderTagsList(); }
+function saveCustomTag(){
+    const k=document.getElementById('new-tag-key').value.trim(), v=document.getElementById('new-tag-val').value.trim();
+    if(!k||!v)return alert("Tag and Value required.");
+    if(editingTagIndex!==null) customTags[editingTagIndex]={name:k,value:v}; else customTags.push({name:k,value:v});
+    localStorage.setItem('customTags',JSON.stringify(customTags)); cancelEditTag();
 }
-function cancelEditTag() {
-    editingTagIndex = null;
-    document.getElementById('new-tag-key').value = '';
-    document.getElementById('new-tag-val').value = '';
-    document.getElementById('tag-form-title').innerText = "Add New Tag";
-    document.getElementById('tag-save-btn').innerText = "Add Tag";
-    document.getElementById('tag-cancel-btn').style.display = "none";
-    renderTagsList();
-}
-function saveCustomTag() {
-    const key = document.getElementById('new-tag-key').value.trim();
-    const val = document.getElementById('new-tag-val').value.trim();
-    if(!key || !val) return alert("Please enter both a Tag (like [Name]) and a Value.");
-    if (editingTagIndex !== null) {
-        customTags[editingTagIndex] = { name: key, value: val };
-    } else {
-        customTags.push({ name: key, value: val });
-    }
-    localStorage.setItem('customTags', JSON.stringify(customTags));
-    cancelEditTag();
-}
-function deleteCustomTag(idx) {
-    if(confirm("Delete this tag?")) {
-        if(editingTagIndex === idx) cancelEditTag();
-        else if(editingTagIndex !== null && idx < editingTagIndex) editingTagIndex--; 
-        customTags.splice(idx, 1);
-        localStorage.setItem('customTags', JSON.stringify(customTags));
-        renderTagsList();
-    }
-}
+function deleteCustomTag(i){ if(confirm("Delete tag?")){ if(editingTagIndex===i)cancelEditTag(); customTags.splice(i,1); localStorage.setItem('customTags',JSON.stringify(customTags)); renderTagsList(); }}
 
-/**
- * --- PART 3.5: TEMPLATE MANAGER ---
- */
-function openTemplateManager() {
-    showTemplateList();
-    document.getElementById('template-modal').style.display = 'flex';
-}
-function closeTemplateManager() {
-    document.getElementById('template-modal').style.display = 'none';
-}
-function showTemplateList() {
-    document.getElementById('tpl-list-view').style.display = 'block';
-    document.getElementById('tpl-editor-view').style.display = 'none';
-    document.getElementById('tpl-main-actions').style.display = 'flex';
-    
-    const list = document.getElementById('tpl-list');
-    list.innerHTML = '';
-    
-    if(taskTemplates.length === 0) {
-        list.innerHTML = '<div style="padding:15px; text-align:center; color:#888;">No templates found.</div>';
-        return;
-    }
-    
-    taskTemplates.forEach(t => {
-        const div = document.createElement('div');
-        div.className = 'tag-item';
-        div.innerHTML = `
-            <div><strong>${escapeHtml(t.name)}</strong></div>
-            <div class="tag-actions">
-                <button onclick="showTemplateEditor('${t.id}')" style="border:none; background:none; color:#2196f3; cursor:pointer;"><span class="material-symbols-outlined" style="font-size:16px;">edit</span></button>
-                <button onclick="deleteTemplate('${t.id}')" style="border:none; background:none; color:#e57373; cursor:pointer;"><span class="material-symbols-outlined" style="font-size:16px;">delete</span></button>
-            </div>
-        `;
+// --- TEMPLATES ---
+function openTemplateManager(){ showTemplateList(); document.getElementById('template-modal').style.display='flex'; }
+function closeTemplateManager(){ document.getElementById('template-modal').style.display='none'; }
+function showTemplateList(){
+    document.getElementById('tpl-list-view').style.display='block'; document.getElementById('tpl-editor-view').style.display='none'; document.getElementById('tpl-main-actions').style.display='flex';
+    const list=document.getElementById('tpl-list'); list.innerHTML='';
+    if(taskTemplates.length===0){ list.innerHTML='<div style="padding:15px;text-align:center;color:#888;">No templates.</div>'; return; }
+    taskTemplates.forEach(t=>{
+        const div=document.createElement('div'); div.className='tag-item';
+        div.innerHTML=`<div><strong>${escapeHtml(t.name)}</strong></div><div class="tag-actions"><button onclick="showTemplateEditor('${t.id}')" style="border:none;background:none;color:#2196f3;cursor:pointer;">✎</button><button onclick="deleteTemplate('${t.id}')" style="border:none;background:none;color:#e57373;cursor:pointer;">✕</button></div>`;
         list.appendChild(div);
     });
 }
-
-function cloneTree(tree) {
-    return tree.map(node => ({
-        text: node.text,
-        subtasks: node.subtasks ? cloneTree(node.subtasks) : []
-    }));
-}
-
-function showTemplateEditor(id) {
-    editingTemplateId = id;
-    document.getElementById('tpl-list-view').style.display = 'none';
-    document.getElementById('tpl-editor-view').style.display = 'block';
-    document.getElementById('tpl-main-actions').style.display = 'none';
-    
-    if(id) {
-        const tpl = taskTemplates.find(t => t.id === id);
-        document.getElementById('tpl-name-input').value = tpl.name;
-        currentTemplateTree = cloneTree(tpl.subtasks || []); 
-    } else {
-        document.getElementById('tpl-name-input').value = '';
-        currentTemplateTree = [{text: "New Step", subtasks:[]}]; 
-    }
+function cloneTree(t){ return t.map(n=>({text:n.text, note:n.note||'', subtasks:n.subtasks?cloneTree(n.subtasks):[]})); }
+function showTemplateEditor(id){
+    editingTemplateId=id; document.getElementById('tpl-list-view').style.display='none'; document.getElementById('tpl-editor-view').style.display='block'; document.getElementById('tpl-main-actions').style.display='none';
+    if(id){ const t=taskTemplates.find(x=>x.id===id); document.getElementById('tpl-name-input').value=t.name; currentTemplateTree=cloneTree(t.subtasks||[]); }
+    else{ document.getElementById('tpl-name-input').value=''; currentTemplateTree=[{text:"New Step",note:"",subtasks:[]}]; }
     renderTemplateTree();
 }
-
-function getTemplateNode(path) {
-    let node = { subtasks: currentTemplateTree };
-    for (let i of path) {
-        node = node.subtasks[i];
-    }
-    return node;
-}
-
-function renderTemplateTree() {
-    const container = document.getElementById('tpl-tree-container');
-    container.innerHTML = '';
-    function buildNode(nodes, path) {
-        const ul = document.createElement('div');
-        ul.style.paddingLeft = path.length > 0 ? '20px' : '0';
-        
-        nodes.forEach((node, idx) => {
-            const currentPath = [...path, idx];
-            const row = document.createElement('div');
-            row.style.marginBottom = "5px";
-            row.style.display = "flex";
-            row.style.gap = "5px";
+function getTemplateNode(path){ let n={subtasks:currentTemplateTree}; for(let i of path) n=n.subtasks[i]; return n; }
+function renderTemplateTree(){
+    const c=document.getElementById('tpl-tree-container'); c.innerHTML='';
+    function build(nodes, path){
+        const ul=document.createElement('div'); ul.style.paddingLeft=path.length>0?'20px':'0';
+        nodes.forEach((n,i)=>{
+            const cur=[...path,i]; const div=document.createElement('div'); div.style.marginBottom="8px"; div.style.borderLeft="2px solid #eee"; div.style.paddingLeft="8px";
+            div.innerHTML=`<div style="display:flex;gap:5px;margin-bottom:4px;"><input type="text" value="${escapeHtml(n.text)}" onchange="updateTemplateNodeText('${cur.join(',')}',this.value)" style="flex:1;padding:5px;border:1px solid #ddd;border-radius:3px;font-size:13px;"><button onclick="toggleTemplateNote('${cur.join(',')}')" title="Note" style="border:none;background:none;color:${n.note?'#2196f3':'#ccc'};cursor:pointer;">📝</button><button onclick="addTemplateSubNode('${cur.join(',')}')" style="border:none;background:#e3f2fd;color:#2196f3;border-radius:3px;">+</button><button onclick="deleteTemplateNode('${cur.join(',')}')" style="border:none;background:#ffebee;color:#e57373;border-radius:3px;">&times;</button></div>`;
             
-            row.innerHTML = `
-                <input type="text" value="${escapeHtml(node.text)}" 
-                    onchange="updateTemplateNodeText('${currentPath.join(',')}', this.value)"
-                    style="flex:1; padding:5px; border:1px solid #ddd; border-radius:3px; font-size:13px;">
-                <button title="Add Sub-step" onclick="addTemplateSubNode('${currentPath.join(',')}')" style="border:none; background:#e3f2fd; color:#2196f3; cursor:pointer; border-radius:3px; padding:0 5px;">+</button>
-                <button title="Delete" onclick="deleteTemplateNode('${currentPath.join(',')}')" style="border:none; background:#ffebee; color:#e57373; cursor:pointer; border-radius:3px; padding:0 5px;">&times;</button>
-            `;
-            
-            ul.appendChild(row);
-            if(node.subtasks && node.subtasks.length > 0) {
-                ul.appendChild(buildNode(node.subtasks, currentPath));
+            // Rich Text Note Block for Template
+            if(n.noteOpen) {
+                const noteDiv = document.createElement('div'); noteDiv.className = 'task-note-block';
+                noteDiv.innerHTML = `
+                    <div class="rte-toolbar">
+                        <button class="rte-btn" onmousedown="event.preventDefault();formatRichText('bold')">B</button>
+                        <button class="rte-btn" onmousedown="event.preventDefault();formatRichText('italic')">I</button>
+                        <button class="rte-btn" onmousedown="event.preventDefault();formatRichText('insertUnorderedList')">•</button>
+                    </div>
+                    <div class="rte-editor" contenteditable="true" onblur="updateTemplateNodeNote('${cur.join(',')}', this.innerHTML)">${n.note||''}</div>`;
+                div.appendChild(noteDiv);
             }
+            
+            ul.appendChild(div);
+            if(n.subtasks && n.subtasks.length>0) ul.appendChild(build(n.subtasks, cur));
         });
         return ul;
     }
-    container.appendChild(buildNode(currentTemplateTree, []));
+    c.appendChild(build(currentTemplateTree, []));
 }
+function updateTemplateNodeText(p,v){ getTemplateNode(p.split(',').map(Number)).text=v; }
+function toggleTemplateNote(p){ const n=getTemplateNode(p.split(',').map(Number)); n.noteOpen=!n.noteOpen; renderTemplateTree(); }
+function updateTemplateNodeNote(p,v){ getTemplateNode(p.split(',').map(Number)).note=v; }
+function addRootTemplateItem(){ currentTemplateTree.push({text:"New Step",note:"",subtasks:[]}); renderTemplateTree(); }
+function addTemplateSubNode(p){ getTemplateNode(p.split(',').map(Number)).subtasks.push({text:"Sub step",note:"",subtasks:[]}); renderTemplateTree(); }
+function deleteTemplateNode(p){ const path=p.split(',').map(Number), idx=path.pop(), parent=path.length===0?{subtasks:currentTemplateTree}:getTemplateNode(path); parent.subtasks.splice(idx,1); renderTemplateTree(); }
+function saveTemplate(){
+    const name=document.getElementById('tpl-name-input').value.trim(); if(!name)return alert("Name required");
+    // Clean up ui flags like noteOpen before saving
+    const cleanTree = (t) => t.map(n => ({text:n.text, note:n.note, subtasks:cleanTree(n.subtasks||[])}));
+    const finalTree = cleanTree(currentTemplateTree);
+    if(editingTemplateId){ const t=taskTemplates.find(x=>x.id===editingTemplateId); t.name=name; t.subtasks=finalTree; }
+    else taskTemplates.push({id:Date.now().toString(),name:name,subtasks:finalTree});
+    localStorage.setItem('simpList-templates',JSON.stringify(taskTemplates)); showTemplateList();
+}
+function deleteTemplate(id){ if(confirm('Delete?')){ taskTemplates=taskTemplates.filter(x=>x.id!==id); localStorage.setItem('simpList-templates',JSON.stringify(taskTemplates)); showTemplateList(); }}
 
-function updateTemplateNodeText(pathStr, val) {
-    const path = pathStr.split(',').map(Number);
-    const node = getTemplateNode(path);
-    node.text = val;
-}
-function addRootTemplateItem() {
-    currentTemplateTree.push({ text: "New Step", subtasks: [] });
-    renderTemplateTree();
-}
-function addTemplateSubNode(pathStr) {
-    const path = pathStr.split(',').map(Number);
-    const node = getTemplateNode(path);
-    if(!node.subtasks) node.subtasks = [];
-    node.subtasks.push({ text: "Sub step", subtasks: [] });
-    renderTemplateTree();
-}
-function deleteTemplateNode(pathStr) {
-    const path = pathStr.split(',').map(Number);
-    const idx = path.pop();
-    const parent = path.length === 0 ? {subtasks: currentTemplateTree} : getTemplateNode(path);
-    parent.subtasks.splice(idx, 1);
-    renderTemplateTree();
-}
+// --- FOLDERS ---
+function renderButtonFolders(){
+    const c=document.getElementById('folders-container'), q=document.getElementById('button-search').value.toLowerCase(); c.innerHTML='';
+    if(buttonFolders.length===0){ c.innerHTML='<div style="color:#888;font-style:italic;padding:10px;">No folders.</div>'; return; }
+    buttonFolders.forEach((f,fi)=>{
+        if(f.collapsed===undefined)f.collapsed=false;
+        let items=f.items||[]; if(q) items=items.filter(i=>i.name.toLowerCase().includes(q)||i.message.toLowerCase().includes(q));
+        if(q && items.length===0)return;
+        const div=document.createElement('div'); div.className='folder-div'; if(f.collapsed&&!q)div.classList.add('collapsed');
+        div.draggable=true;
+        div.ondragstart=(e)=>{ e.stopPropagation(); dragType='folder'; dragSrcFolderIndex=fi; e.dataTransfer.effectAllowed='move'; div.classList.add('dragging'); };
+        div.ondragover=(e)=>{ if(dragType==='folder'){ e.preventDefault(); div.classList.add('drag-over'); }};
+        div.ondragleave=()=>{ div.classList.remove('drag-over'); };
+        div.ondrop=(e)=>{ if(dragType==='folder'){ e.stopPropagation(); div.classList.remove('drag-over'); div.classList.remove('dragging'); if(dragSrcFolderIndex!==fi){ const it=buttonFolders.splice(dragSrcFolderIndex,1)[0]; buttonFolders.splice(fi,0,it); saveButtonFolders(); }}};
+        div.ondragend=()=>{ div.classList.remove('dragging'); };
 
-function saveTemplate() {
-    const name = document.getElementById('tpl-name-input').value.trim();
-    if(!name) return alert("Template name required");
-    
-    if(editingTemplateId) {
-        const tpl = taskTemplates.find(t => t.id === editingTemplateId);
-        tpl.name = name;
-        tpl.subtasks = currentTemplateTree;
-    } else {
-        taskTemplates.push({
-            id: Date.now().toString(),
-            name: name,
-            subtasks: currentTemplateTree
+        const head=document.createElement('div'); head.className='folder-header'; head.style.backgroundColor=f.color||'#2196f3'; head.style.color=getContrastYIQ(head.style.backgroundColor);
+        head.innerHTML=`<div style="display:flex;align-items:center;"><span class="material-symbols-outlined drag-handle" title="Drag">drag_indicator</span><span style="font-weight:600">${escapeHtml(f.folderName)}</span></div><div class="controls"><button onclick="event.stopPropagation();openButtonModal('${f.id}',null)">+</button><button onclick="event.stopPropagation();openFolderModal('${f.id}')">⚙</button></div>`;
+        head.onclick=(e)=>{ if(!e.target.closest('button')&&!e.target.closest('.drag-handle')){ div.classList.toggle('collapsed'); f.collapsed=div.classList.contains('collapsed'); saveButtonFolders(); }};
+        
+        const list=document.createElement('div'); list.className='buttons-list';
+        list.ondragover=(e)=>{ if(dragType==='button'){ e.preventDefault(); list.classList.add('drag-over'); }};
+        list.ondragleave=()=>{ list.classList.remove('drag-over'); };
+        list.ondrop=(e)=>{ if(dragType==='button'){ e.stopPropagation(); list.classList.remove('drag-over'); const src=buttonFolders[dragSrcFolderIndex], it=src.items.splice(dragSrcButtonIndex,1)[0]; f.items.push(it); saveButtonFolders(); }};
+
+        items.forEach((item, ii)=>{
+            const realIdx=f.items.indexOf(item);
+            const btn=document.createElement('button'); btn.className='copy-box'; btn.style.backgroundColor=item.color||'#2196f3'; btn.style.color=getContrastYIQ(btn.style.backgroundColor);
+            let prev=replaceTags(item.message); if(prev.length>300)prev=prev.substring(0,300)+'...';
+            btn.innerHTML=`${escapeHtml(item.name)}<span class="tooltip">${escapeHtml(prev)}</span>`;
+            btn.onclick=()=>copyToClipboard(item.message); btn.oncontextmenu=(e)=>{e.preventDefault(); openButtonModal(f.id, realIdx);};
+            btn.draggable=true;
+            btn.ondragstart=(e)=>{ e.stopPropagation(); dragType='button'; dragSrcFolderIndex=fi; dragSrcButtonIndex=realIdx; e.dataTransfer.effectAllowed='move'; btn.classList.add('dragging'); };
+            btn.ondragend=()=>{ btn.classList.remove('dragging'); };
+            btn.ondragover=(e)=>{ if(dragType==='button') e.preventDefault(); };
+            btn.ondrop=(e)=>{ if(dragType==='button'){ e.stopPropagation(); const src=buttonFolders[dragSrcFolderIndex], it=src.items.splice(dragSrcButtonIndex,1)[0]; f.items.splice(realIdx,0,it); saveButtonFolders(); }};
+            list.appendChild(btn);
         });
-    }
-    
-    localStorage.setItem('simplist-templates', JSON.stringify(taskTemplates));
-    showTemplateList();
+        div.appendChild(head); div.appendChild(list); c.appendChild(div);
+    });
 }
-function deleteTemplate(id) {
-    if(confirm('Delete template?')) {
-        taskTemplates = taskTemplates.filter(t => t.id !== id);
-        localStorage.setItem('simplist-templates', JSON.stringify(taskTemplates));
-        showTemplateList();
+function saveButtonFolders(){ localStorage.setItem('foldersV2',JSON.stringify(buttonFolders)); renderButtonFolders(); }
+
+// --- BUTTON MODALS ---
+function openFolderModal(id){ editingFolderId=id; const m=document.getElementById('folder-modal'); if(id){const f=buttonFolders.find(x=>x.id===id); document.getElementById('folder-name-input').value=f.folderName; document.getElementById('folder-color-input').value=f.color; document.getElementById('folder-delete-btn').style.display='block';}else{document.getElementById('folder-name-input').value=''; document.getElementById('folder-delete-btn').style.display='none';} m.style.display='flex'; }
+function closeFolderModal(){ document.getElementById('folder-modal').style.display='none'; }
+function saveFolder(){ const n=document.getElementById('folder-name-input').value.trim(), c=document.getElementById('folder-color-input').value; if(!n)return alert("Name required"); if(editingFolderId){const f=buttonFolders.find(x=>x.id===editingFolderId); f.folderName=n; f.color=c;}else{buttonFolders.push({id:Date.now().toString(),folderName:n,color:c,items:[]});} saveButtonFolders(); closeFolderModal(); }
+function deleteFolderHelper(){ if(confirm("Delete folder?")){ buttonFolders=buttonFolders.filter(x=>x.id!==editingFolderId); saveButtonFolders(); closeFolderModal(); }}
+
+function openButtonModal(fid,idx){ targetFolderId=fid; editingBtnIndex=idx; const m=document.getElementById('btn-modal'), f=buttonFolders.find(x=>x.id===fid); if(!f)return;
+const sel=document.getElementById('tag-inserter'); sel.innerHTML='<option value="">+ Tag</option>'+customTags.map(t=>`<option value="${t.name}">${t.name}</option>`).join('');
+if(idx!==null){ const it=f.items[idx]; document.getElementById('btn-label-input').value=it.name; document.getElementById('btn-content-input').value=it.message; document.getElementById('btn-color-input').value=it.color; document.getElementById('btn-delete-btn').style.display='block'; }
+else{ document.getElementById('btn-label-input').value=''; document.getElementById('btn-content-input').value=''; document.getElementById('btn-color-input').value=f.color; document.getElementById('btn-delete-btn').style.display='none'; } m.style.display='flex'; }
+function insertTagIntoMessage(s){ if(!s.value)return; const t=document.getElementById('btn-content-input'), p=t.selectionStart; t.value=t.value.slice(0,p)+s.value+t.value.slice(t.selectionEnd); s.value=''; t.focus(); }
+function closeBtnModal(){ document.getElementById('btn-modal').style.display='none'; }
+function saveButton(){ const l=document.getElementById('btn-label-input').value.trim(), m=document.getElementById('btn-content-input').value.trim(), c=document.getElementById('btn-color-input').value; if(!l||!m)return alert("Fields required"); const f=buttonFolders.find(x=>x.id===targetFolderId); if(editingBtnIndex!==null)f.items[editingBtnIndex]={name:l,message:m,color:c}; else f.items.push({name:l,message:m,color:c}); saveButtonFolders(); closeBtnModal(); }
+function deleteButtonHelper(){ if(confirm("Delete?")){ const f=buttonFolders.find(x=>x.id===targetFolderId); f.items.splice(editingBtnIndex,1); saveButtonFolders(); closeBtnModal(); }}
+function copyToClipboard(t){ navigator.clipboard.writeText(replaceTags(t)).then(()=>{ const d=document.createElement('div'); d.innerText="Copied!"; d.style.cssText="position:fixed;bottom:20px;left:50%;transform:translateX(-50%);background:#333;color:#fff;padding:6px 12px;border-radius:4px;z-index:2000;font-size:12px;"; document.body.appendChild(d); setTimeout(()=>d.remove(),1500); }); }
+
+// --- SIMPLIST TASKS ---
+function getTaskByPath(idx,path){ let t=cards[idx].tasks[path[0]]; for(let i=1;i<path.length;i++) t=t.subtasks[path[i]]; return t; }
+function calculateProgress(t){ let tot=0,sc=0; function trav(n){ if(n.subtasks) n.subtasks.forEach(trav); tot++; if(n.status==='done')sc+=1; else if(n.status==='doing')sc+=0.5; } if(t.subtasks)t.subtasks.forEach(trav); return tot===0?0:(sc/tot)*100; }
+function calculateCardProgress(c){ let tot=0,sc=0; function trav(n){ tot++; if(n.status==='done')sc+=1; else if(n.status==='doing')sc+=0.5; if(n.subtasks)n.subtasks.forEach(trav); } c.tasks.forEach(trav); return tot===0?0:(sc/tot)*100; }
+function getStatusIcon(s){ return s==='done'?'check_circle':(s==='doing'?'timelapse':'radio_button_unchecked'); }
+function cycleTaskStatus(idx,pathStr){ const t=getTaskByPath(idx,pathStr.split(',').map(Number)); t.status=(!t.status||t.status==='todo')?'doing':(t.status==='doing'?'done':'todo'); t.done=(t.status==='done'); localStorage.setItem('simpList-data',JSON.stringify(cards)); renderCards(); }
+
+function moveTask(sIdx,sP,dIdx,dP,pos){
+    if(sIdx===dIdx){
+        const isChild=sP.every((v,i)=>dP[i]===v); if(isChild&&dP.length>sP.length)return;
+        if(JSON.stringify(sP)===JSON.stringify(dP) && pos==='inside') return;
+        if(pos!=='inside' && sP.length===dP.length){ const pS=sP.slice(0,-1),pD=dP.slice(0,-1); if(JSON.stringify(pS)===JSON.stringify(pD)){ const sI=sP[sP.length-1], dI=dP[dP.length-1]; if(sI===dI)return; if(pos==='after'&&sI===dI)return; if(pos==='before'&&sI===dI)return; }}
     }
+    const mt=getTaskByPath(sIdx,sP); mt._del=true; const clone=JSON.parse(JSON.stringify(mt)); delete clone._del;
+    if(pos==='inside'){ const tg=getTaskByPath(dIdx,dP); if(!tg.subtasks)tg.subtasks=[]; tg.subtasks.push(clone); tg.collapsed=false; }
+    else if(pos==='inside-card'){ cards[dIdx].tasks.push(clone); }
+    else{
+        let list, idx; if(dP.length===1){ list=cards[dIdx].tasks; idx=dP[0]; } else { const p=getTaskByPath(dIdx,dP.slice(0,-1)); list=p.subtasks; idx=dP[dP.length-1]; }
+        if(pos==='after') idx++; list.splice(idx,0,clone);
+    }
+    function sweep(l){ for(let i=l.length-1;i>=0;i--){ if(l[i]._del){ l.splice(i,1); return true; } if(l[i].subtasks && sweep(l[i].subtasks)) return true; } return false; }
+    sweep(cards[sIdx].tasks); localStorage.setItem('simpList-data',JSON.stringify(cards)); renderCards();
 }
 
-/**
- * --- PART 4: FOLDER & BUTTON RENDER ---
- */
-function renderButtonFolders() {
-  const container = document.getElementById('folders-container');
-  const searchQuery = document.getElementById('button-search').value.toLowerCase();
-  container.innerHTML = '';
-
-  if (buttonFolders.length === 0) {
-    container.innerHTML = '<div style="color:#888; font-style:italic; padding:10px;">No folders yet. Click "+ New Folder" to start.</div>';
-    return;
-  }
-
-  buttonFolders.forEach((folder, fIndex) => {
-    // Ensure data integrity
-    if (folder.collapsed === undefined) folder.collapsed = false;
-
-    const folderName = (folder.folderName || '').toLowerCase();
-    const matchesFolder = folderName.includes(searchQuery);
-    let filteredItems = folder.items || [];
-    if (searchQuery) {
-      if (!matchesFolder) {
-        filteredItems = filteredItems.filter(item => 
-          item.name.toLowerCase().includes(searchQuery) || 
-          item.message.toLowerCase().includes(searchQuery)
-        );
-      }
-      if (!matchesFolder && filteredItems.length === 0) return;
-    }
-
-    const folderColor = folder.color || '#2196f3';
-    const textColor = getContrastYIQ(folderColor);
-    const folderDiv = document.createElement('div');
-    folderDiv.className = 'folder-div';
-    
-    if (folder.collapsed && !searchQuery) {
-        folderDiv.classList.add('collapsed');
-    }
-    
-    // Drag Attributes for Folder
-    folderDiv.draggable = true;
-    folderDiv.ondragstart = (e) => {
-        e.stopPropagation();
-        dragType = 'folder';
-        dragSrcFolderIndex = fIndex;
-        e.dataTransfer.effectAllowed = 'move';
-        folderDiv.classList.add('dragging');
-    };
-    folderDiv.ondragover = (e) => {
-        if(dragType === 'folder') {
-            e.preventDefault();
-            e.dataTransfer.dropEffect = 'move';
-            folderDiv.classList.add('drag-over');
-        }
-    };
-    folderDiv.ondragleave = () => {
-        folderDiv.classList.remove('drag-over');
-    };
-    folderDiv.ondrop = (e) => {
-        if(dragType === 'folder') {
-            e.stopPropagation();
-            folderDiv.classList.remove('drag-over');
-            folderDiv.classList.remove('dragging');
-            if(dragSrcFolderIndex !== fIndex) {
-                const item = buttonFolders.splice(dragSrcFolderIndex, 1)[0];
-                buttonFolders.splice(fIndex, 0, item);
-                saveButtonFolders();
-            }
-        }
-    };
-    folderDiv.ondragend = () => folderDiv.classList.remove('dragging');
-
-    const header = document.createElement('div');
-    header.className = 'folder-header';
-    header.style.backgroundColor = folderColor;
-    header.style.color = textColor;
-    header.innerHTML = `
-      <div style="display:flex; align-items:center;">
-        <span class="material-symbols-outlined drag-handle" title="Drag to reorder">drag_indicator</span>
-        <div class="title-area">
-            <span class="material-symbols-outlined">folder</span>
-            <span>${escapeHtml(folder.folderName || 'Untitled')}</span>
-        </div>
-      </div>
-      <div class="controls">
-        <button onclick="event.stopPropagation(); openButtonModal('${folder.id}', null)" title="Add Button" style="color:${textColor}; border-color:${textColor}">
-          <span class="material-symbols-outlined" style="font-size:16px;">add</span>
-        </button>
-        <button onclick="event.stopPropagation(); openFolderModal('${folder.id}')" title="Folder Settings" style="color:${textColor}; border-color:${textColor}">
-          <span class="material-symbols-outlined" style="font-size:16px;">settings</span>
-        </button>
-      </div>
-    `;
-    
-    // Toggle Logic with Persistence
-    header.onclick = (e) => {
-        if(!e.target.closest('.drag-handle') && !e.target.closest('button')) {
-            folderDiv.classList.toggle('collapsed');
-            folder.collapsed = folderDiv.classList.contains('collapsed');
-            saveButtonFolders();
-        }
-    };
-
-    const list = document.createElement('div');
-    list.className = 'buttons-list';
-    
-    // Allow dropping buttons into empty space or list
-    list.ondragover = (e) => {
-        if(dragType === 'button') {
-            e.preventDefault();
-            e.dataTransfer.dropEffect = 'move';
-            list.classList.add('drag-over');
-        }
-    };
-    list.ondragleave = () => list.classList.remove('drag-over');
-    list.ondrop = (e) => {
-        if(dragType === 'button') {
-            e.stopPropagation();
-            list.classList.remove('drag-over');
-            // If dropping on list background (not a specific button), append to end
-            const srcFolder = buttonFolders[dragSrcFolderIndex];
-            const btnItem = srcFolder.items.splice(dragSrcButtonIndex, 1)[0];
-            folder.items.push(btnItem);
-            saveButtonFolders();
-        }
-    };
-
-    if (filteredItems && Array.isArray(filteredItems)) {
-      filteredItems.forEach((item, originalIndex) => {
-        const realIdx = folder.items.indexOf(item);
-        const btn = document.createElement('button');
-        const btnColor = item.color || '#2196F3';
-        const btnTextCol = getContrastYIQ(btnColor);
-        let previewText = replaceTags(item.message);
-        if(previewText.length > 300) previewText = previewText.substring(0, 300) + '...';
+function renderCards(){
+    const c=document.getElementById('card-list'), q=document.getElementById('task-search').value.toLowerCase(); c.innerHTML='';
+    cards.forEach((card,ci)=>{
+        if(card.tasks){ const mig=(l)=>{l.forEach(t=>{if(!t.status)t.status=t.done?'done':'todo'; if(t.subtasks)mig(t.subtasks);});}; mig(card.tasks); }
+        const div=document.createElement('div'); div.className='card-mat'; if(card.collapsed&&!q)div.classList.add('collapsed');
+        div.ondragover=(e)=>{if(dragType==='card'){e.preventDefault();e.dataTransfer.dropEffect='move';}if(dragType==='task')e.preventDefault();};
+        div.ondrop=(e)=>{e.stopPropagation();if(dragType==='card'&&dragSrcCardIndex!==ci){const it=cards.splice(dragSrcCardIndex,1)[0]; cards.splice(ci,0,it); localStorage.setItem('simpList-data',JSON.stringify(cards)); renderCards();} if(dragType==='task'&&!e.target.closest('.task-node'))moveTask(dragSrcCardIndex,dragSrcTaskPath,ci,[],'inside-card');};
         
-        btn.className = 'copy-box';
-        btn.style.backgroundColor = btnColor;
-        btn.style.color = btnTextCol;
-        btn.innerHTML = `${escapeHtml(item.name)}<span class="tooltip">${escapeHtml(previewText)}</span>`;
-        btn.onclick = () => copyToClipboard(item.message);
-        btn.oncontextmenu = (e) => {
-          e.preventDefault();
-          openButtonModal(folder.id, realIdx);
-        };
+        const hCol=card.color||'#f3edff'; const txtCol=getContrastYIQ(hCol);
+        div.innerHTML=`<div class="card-header" style="background:${hCol};color:${txtCol}"><div style="flex:1;"><div style="display:flex;align-items:center;"><span class="material-symbols-outlined drag-handle card-drag-handle" draggable="true" title="Drag">drag_indicator</span><span style="font-size:1.1em;font-weight:600;">${escapeHtml(card.title)}</span></div><div class="progress-track" style="display:${card.tasks.length>0?'block':'none'}"><div class="progress-fill" style="width:${calculateCardProgress(card)}%"></div></div></div><div class="controls"><button onclick="event.stopPropagation();openListModal('${card.id}')">⚙</button></div></div>`;
+        const head=div.querySelector('.card-header');
+        head.querySelector('.card-drag-handle').ondragstart=(e)=>{e.stopPropagation();dragSrcCardIndex=ci;dragType='card';e.dataTransfer.effectAllowed='move';div.classList.add('dragging');};
+        head.querySelector('.card-drag-handle').ondragend=()=>{div.classList.remove('dragging');};
+        head.onclick=(e)=>{if(!e.target.closest('.drag-handle')&&!e.target.closest('button')){div.classList.toggle('collapsed'); card.collapsed=div.classList.contains('collapsed'); localStorage.setItem('simpList-data',JSON.stringify(cards));}};
         
-        // Button Drag Attributes
-        btn.draggable = true;
-        btn.ondragstart = (e) => {
-            e.stopPropagation();
-            dragType = 'button';
-            dragSrcFolderIndex = fIndex;
-            dragSrcButtonIndex = realIdx;
-            e.dataTransfer.effectAllowed = 'move';
-            btn.classList.add('dragging');
-        };
-        btn.ondragover = (e) => {
-            if(dragType === 'button') {
-                e.preventDefault(); 
-            }
-        };
-        btn.ondragend = () => btn.classList.remove('dragging');
-        btn.ondrop = (e) => {
-            if(dragType === 'button') {
-                e.stopPropagation();
-                const srcFolder = buttonFolders[dragSrcFolderIndex];
-                const btnItem = srcFolder.items.splice(dragSrcButtonIndex, 1)[0];
-                let targetIdx = realIdx;
-                folder.items.splice(targetIdx, 0, btnItem);
-                saveButtonFolders();
-            }
-        };
-
-        list.appendChild(btn);
-      });
-    }
-
-    folderDiv.appendChild(header);
-    folderDiv.appendChild(list);
-    container.appendChild(folderDiv);
-  });
-}
-
-function saveButtonFolders() {
-  localStorage.setItem('foldersV2', JSON.stringify(buttonFolders));
-  renderButtonFolders();
-}
-
-/**
- * --- PART 5: MODAL LOGIC (Folders & Buttons) ---
- */
-function openFolderModal(id) {
-  editingFolderId = id;
-  const modal = document.getElementById('folder-modal');
-  const deleteBtn = document.getElementById('folder-delete-btn');
-  if(id) {
-    const folder = buttonFolders.find(f => f.id === id);
-    document.getElementById('folder-modal-title').innerText = "Edit Folder";
-    document.getElementById('folder-name-input').value = folder.folderName;
-    document.getElementById('folder-color-input').value = folder.color || '#2196f3';
-    deleteBtn.style.display = 'block';
-  } else {
-    document.getElementById('folder-modal-title').innerText = "New Folder";
-    document.getElementById('folder-name-input').value = "";
-    document.getElementById('folder-color-input').value = "#2196f3";
-    deleteBtn.style.display = 'none';
-  }
-  modal.style.display = 'flex';
-  document.getElementById('folder-name-input').focus();
-}
-function closeFolderModal() {
-  document.getElementById('folder-modal').style.display = 'none';
-  editingFolderId = null;
-}
-function saveFolder() {
-  const name = document.getElementById('folder-name-input').value.trim();
-  const color = document.getElementById('folder-color-input').value;
-  if(!name) return alert("Please enter a folder name.");
-  if(editingFolderId) {
-    const folder = buttonFolders.find(f => f.id === editingFolderId);
-    if(folder) {
-      folder.folderName = name;
-      folder.color = color;
-    }
-  } else {
-    buttonFolders.push({ id: Date.now().toString(), folderName: name, color: color, items: [] });
-  }
-  saveButtonFolders();
-  closeFolderModal();
-}
-function deleteFolderHelper() {
-  if(!editingFolderId) return;
-  if(confirm("Delete this folder and all its buttons?")) {
-    buttonFolders = buttonFolders.filter(f => f.id !== editingFolderId);
-    saveButtonFolders();
-    closeFolderModal();
-  }
-}
-
-function openButtonModal(folderId, btnIdx) {
-  targetFolderId = folderId;
-  editingBtnIndex = btnIdx; 
-  const modal = document.getElementById('btn-modal');
-  const deleteBtn = document.getElementById('btn-delete-btn');
-  const folder = buttonFolders.find(f => f.id === folderId);
-  if (!folder) return;
-
-  const tagSelect = document.getElementById('tag-inserter');
-  tagSelect.innerHTML = '<option value="">+ Insert Tag</option>';
-  tagSelect.innerHTML += '<option value="[Date]">[Date]</option>';
-  tagSelect.innerHTML += '<option value="[Time]">[Time]</option>';
-  customTags.forEach(t => {
-      const opt = document.createElement('option');
-      opt.value = t.name;
-      opt.text = t.name;
-      tagSelect.appendChild(opt);
-  });
-
-  if (btnIdx !== null) {
-    const item = folder.items[btnIdx];
-    document.getElementById('btn-modal-title').innerText = "Edit Button";
-    document.getElementById('btn-label-input').value = item.name;
-    document.getElementById('btn-content-input').value = item.message;
-    document.getElementById('btn-color-input').value = item.color || '#2196f3';
-    deleteBtn.style.display = 'block';
-  } else {
-    document.getElementById('btn-modal-title').innerText = "New Button";
-    document.getElementById('btn-label-input').value = '';
-    document.getElementById('btn-content-input').value = '';
-    document.getElementById('btn-color-input').value = folder.color || '#2196f3';
-    deleteBtn.style.display = 'none';
-  }
-  modal.style.display = 'flex';
-  document.getElementById('btn-label-input').focus();
-}
-function insertTagIntoMessage(select) {
-    if(!select.value) return;
-    const textarea = document.getElementById('btn-content-input');
-    const startPos = textarea.selectionStart;
-    const endPos = textarea.selectionEnd;
-    textarea.value = textarea.value.substring(0, startPos) + select.value + textarea.value.substring(endPos, textarea.value.length);
-    select.value = "";
-    textarea.focus();
-}
-function closeBtnModal() {
-  document.getElementById('btn-modal').style.display = 'none';
-  targetFolderId = null;
-  editingBtnIndex = null;
-}
-function saveButton() {
-  const label = document.getElementById('btn-label-input').value.trim();
-  const message = document.getElementById('btn-content-input').value.trim();
-  const color = document.getElementById('btn-color-input').value;
-  if(!label || !message) return alert("Please fill in label and content.");
-  const folder = buttonFolders.find(f => f.id === targetFolderId);
-  if(folder) {
-    if(!folder.items) folder.items = [];
-    if(editingBtnIndex !== null) {
-      folder.items[editingBtnIndex] = { name: label, message: message, color: color };
-    } else {
-      folder.items.push({ name: label, message: message, color: color });
-    }
-    saveButtonFolders();
-    closeBtnModal();
-  }
-}
-function deleteButtonHelper() {
-  if(targetFolderId === null || editingBtnIndex === null) return;
-  const folder = buttonFolders.find(f => f.id === targetFolderId);
-  if(folder && confirm("Delete this button?")) {
-    folder.items.splice(editingBtnIndex, 1);
-    saveButtonFolders();
-    closeBtnModal();
-  }
-}
-
-function copyToClipboard(text) {
-  const finalUrl = replaceTags(text);
-  navigator.clipboard.writeText(finalUrl).then(() => {
-    const toast = document.createElement('div');
-    toast.textContent = "Copied: " + finalUrl;
-    toast.style.cssText = "position:fixed; bottom:20px; left:50%; transform:translateX(-50%); background:#333; color:#fff; padding:10px 20px; border-radius:4px; z-index:2000; font-size:14px; max-width:80%; text-align:center;";
-    document.body.appendChild(toast);
-    setTimeout(() => toast.remove(), 2500);
-  });
-}
-
-/**
- * --- PART 6: SIMPLIST RECURSIVE TASKS ---
- */
-
-function getTaskByPath(cardIndex, path) {
-    let task = cards[cardIndex].tasks[path[0]];
-    for (let i = 1; i < path.length; i++) {
-        task = task.subtasks[path[i]];
-    }
-    return task;
-}
-
-function calculateProgress(task) {
-    let total = 0;
-    let score = 0;
-    function traverse(node) {
-        if (node.subtasks && node.subtasks.length > 0) {
-            node.subtasks.forEach(t => traverse(t));
-        }
-        total++;
-        if(node.status === 'done') score += 1;
-        else if(node.status === 'doing') score += 0.5;
-    }
-    if(task.subtasks) task.subtasks.forEach(t => traverse(t));
-    return total === 0 ? 0 : (score/total)*100;
-}
-
-function calculateCardProgress(card) {
-    let total = 0;
-    let score = 0;
-    function traverse(node) {
-        total++;
-        if(node.status === 'done') score += 1;
-        else if(node.status === 'doing') score += 0.5;
-        if(node.subtasks) node.subtasks.forEach(traverse);
-    }
-    card.tasks.forEach(traverse);
-    return total === 0 ? 0 : (score/total)*100;
-}
-
-function getStatusIcon(status) {
-    if(status === 'done') return 'check_circle';
-    if(status === 'doing') return 'timelapse';
-    return 'radio_button_unchecked';
-}
-
-function cycleTaskStatus(cardIndex, pathStr) {
-    const path = pathStr.split(',').map(Number);
-    const task = getTaskByPath(cardIndex, path);
-    
-    if(!task.status || task.status === 'todo') task.status = 'doing';
-    else if(task.status === 'doing') task.status = 'done';
-    else task.status = 'todo';
-    
-    task.done = (task.status === 'done'); // Sync legacy
-    localStorage.setItem('simplist-data', JSON.stringify(cards));
-    renderCards();
-}
-
-function moveTask(srcCardIdx, srcPath, destCardIdx, destPath, position) {
-    // 1. CRITICAL CHECK: Prevent drop on self
-    if (srcCardIdx === destCardIdx) {
-        // Child check
-        const isChild = srcPath.every((val, i) => destPath[i] === val);
-        if (isChild && destPath.length > srcPath.length) return;
+        const content=document.createElement('div'); content.className='card-content';
+        const ul=document.createElement('div'); ul.className='task-list';
         
-        // Exact same location (Self-Drop) - ABORT IMMEDIATELY to prevent deletion
-        if (JSON.stringify(srcPath) === JSON.stringify(destPath) && position === 'inside') return;
-        
-        // Same list sibling check - if index is same or next (visual same), abort
-        if (position !== 'inside' && srcPath.length === destPath.length) {
-             const parentSrc = srcPath.slice(0, -1);
-             const parentDest = destPath.slice(0, -1);
-             if (JSON.stringify(parentSrc) === JSON.stringify(parentDest)) {
-                 const srcI = srcPath[srcPath.length-1];
-                 const destI = destPath[destPath.length-1];
-                 if (srcI === destI) return;
-                 if (position === 'after' && srcI === destI) return;
-                 if (position === 'before' && srcI === destI) return;
-             }
-        }
-    }
-
-    // 2. Get Source Task
-    const markTask = getTaskByPath(srcCardIdx, srcPath);
-    markTask._toBeDeleted = true;
-    
-    // 3. Clone (Deep Copy)
-    const taskClone = JSON.parse(JSON.stringify(markTask));
-    delete taskClone._toBeDeleted; // Clean the clone
-    
-    // 4. Insert Clone
-    if (position === 'inside') {
-        const target = getTaskByPath(destCardIdx, destPath);
-        if(!target.subtasks) target.subtasks = [];
-        target.subtasks.push(taskClone);
-        target.collapsed = false; 
-    } else if (position === 'inside-card') {
-        cards[destCardIdx].tasks.push(taskClone);
-    } else {
-        let targetList;
-        let insertIdx;
-        
-        if (destPath.length === 1) {
-            targetList = cards[destCardIdx].tasks;
-            insertIdx = destPath[0];
-        } else {
-            const parentPath = destPath.slice(0, -1);
-            const parent = getTaskByPath(destCardIdx, parentPath);
-            targetList = parent.subtasks;
-            insertIdx = destPath[destPath.length - 1];
-        }
-        
-        if (position === 'after') insertIdx++;
-        targetList.splice(insertIdx, 0, taskClone);
-    }
-    
-    // 5. Sweep (Remove Original)
-    function sweep(taskList) {
-        for(let i = taskList.length - 1; i >= 0; i--) {
-            if(taskList[i]._toBeDeleted) {
-                taskList.splice(i, 1);
-                return true; 
-            }
-            if(taskList[i].subtasks && sweep(taskList[i].subtasks)) return true;
-        }
-        return false;
-    }
-    sweep(cards[srcCardIdx].tasks);
-    
-    localStorage.setItem('simplist-data', JSON.stringify(cards));
-    renderCards();
-}
-
-function renderCards() {
-  const container = document.getElementById('card-list');
-  const taskSearchQuery = document.getElementById('task-search').value.toLowerCase();
-  container.innerHTML = '';
-  
-  cards.forEach((card, cardIndex) => {
-    // Migration: If legacy 'done' exists but no status, convert
-    if(card.tasks) {
-        const migrate = (list) => {
-            list.forEach(t => {
-                if(!t.status) t.status = t.done ? 'done' : 'todo';
-                if(t.subtasks) migrate(t.subtasks);
-            });
-        };
-        migrate(card.tasks);
-    }
-
-    const cardDiv = document.createElement('div');
-    cardDiv.className = 'card-mat';
-    
-    // Card Drop Logic
-    cardDiv.ondragover = (e) => {
-        if(dragType === 'card') { e.preventDefault(); e.dataTransfer.dropEffect = 'move'; }
-        if(dragType === 'task') { e.preventDefault(); } 
-    };
-    cardDiv.ondrop = (e) => {
-        e.stopPropagation();
-        if(dragType === 'card' && dragSrcCardIndex !== cardIndex) {
-            const item = cards.splice(dragSrcCardIndex, 1)[0];
-            cards.splice(cardIndex, 0, item);
-            localStorage.setItem('simplist-data', JSON.stringify(cards));
-            renderCards();
-        }
-        if(dragType === 'task') {
-             if (!e.target.closest('.task-node')) {
-                 moveTask(dragSrcCardIndex, dragSrcTaskPath, cardIndex, [], 'inside-card');
-             }
-        }
-    };
-    
-    // Persist collapsed state
-    if(card.collapsed && !taskSearchQuery) cardDiv.classList.add('collapsed');
-
-    const headerColor = card.color || '#f3edff';
-    const textColor = getContrastYIQ(headerColor);
-    const pct = calculateCardProgress(card);
-    
-    const header = document.createElement('div');
-    header.className = 'card-header';
-    header.style.backgroundColor = headerColor;
-    header.style.color = textColor;
-    
-    header.innerHTML = `
-      <div style="flex:1;">
-        <div style="display:flex; align-items:center;">
-            <span class="material-symbols-outlined drag-handle card-drag-handle" draggable="true" title="Drag to reorder">drag_indicator</span>
-            <div class="title-area">
-                <span style="font-size:1.1em; font-weight:600;">${escapeHtml(card.title)}</span>
-            </div>
-        </div>
-        <div class="progress-track" style="display:${card.tasks.length>0?'block':'none'}">
-            <div class="progress-fill" style="width:${pct}%"></div>
-        </div>
-      </div>
-      <div class="controls">
-         <button onclick="event.stopPropagation(); openListModal('${card.id}')" title="List Settings" style="color:${textColor}; border-color:${textColor}">
-            <span class="material-symbols-outlined" style="font-size:16px;">settings</span>
-         </button>
-      </div>
-    `;
-    
-    // LIST DRAG HANDLER
-    const listGrip = header.querySelector('.card-drag-handle');
-    listGrip.ondragstart = (e) => {
-        e.stopPropagation();
-        dragSrcCardIndex = cardIndex;
-        dragType = 'card';
-        e.dataTransfer.effectAllowed = 'move';
-        cardDiv.classList.add('dragging');
-    };
-    listGrip.ondragend = () => {
-        cardDiv.classList.remove('dragging');
-    };
-    
-    header.onclick = (e) => {
-        if(!e.target.closest('.drag-handle') && !e.target.closest('button')) {
-            cardDiv.classList.toggle('collapsed');
-            card.collapsed = cardDiv.classList.contains('collapsed');
-            localStorage.setItem('simplist-data', JSON.stringify(cards));
-        }
-    };
-    
-    const contentDiv = document.createElement('div');
-    contentDiv.className = 'card-content';
-    const ul = document.createElement('div');
-    ul.className = 'task-list';
-    
-    function renderTaskTree(tasks, path) {
-        const wrapper = document.createElement('div');
-        tasks.forEach((task, idx) => {
-            const matchesSearch = taskSearchQuery ? JSON.stringify(task).toLowerCase().includes(taskSearchQuery) : true;
-            if(!matchesSearch) return;
-
-            const currentPath = [...path, idx];
-            const pathStr = currentPath.join(',');
-            
-            const nodeDiv = document.createElement('div');
-            nodeDiv.className = 'task-node';
-            
-            // Task Drop Logic
-            nodeDiv.ondragover = (e) => {
-                if(dragType !== 'task') return;
+        function rTree(tasks,path){
+            const wrap=document.createElement('div');
+            tasks.forEach((t,i)=>{
+                if(q && !JSON.stringify(t).toLowerCase().includes(q))return;
+                const cur=[...path,i], pStr=cur.join(',');
+                const nd=document.createElement('div'); nd.className='task-node';
                 
-                // PREVENT SELF DROP HIGHLIGHTS
-                if (dragSrcCardIndex === cardIndex && JSON.stringify(dragSrcTaskPath) === JSON.stringify(currentPath)) {
-                    return; 
+                nd.ondragover=(e)=>{if(dragType!=='task')return; if(dragSrcCardIndex===ci && JSON.stringify(dragSrcTaskPath)===JSON.stringify(cur))return; e.preventDefault();e.stopPropagation(); const r=nd.getBoundingClientRect(), y=e.clientY-r.top; nd.classList.remove('drop-above','drop-below','drop-inside'); if(y<r.height*0.25)nd.classList.add('drop-above'); else if(y>r.height*0.75)nd.classList.add('drop-below'); else nd.classList.add('drop-inside');};
+                nd.ondragleave=(e)=>{if(!nd.contains(e.relatedTarget))nd.classList.remove('drop-above','drop-below','drop-inside');};
+                nd.ondrop=(e)=>{if(dragType!=='task')return; e.stopPropagation(); let pos='inside'; if(nd.classList.contains('drop-above'))pos='before'; else if(nd.classList.contains('drop-below'))pos='after'; nd.classList.remove('drop-above','drop-below','drop-inside'); moveTask(dragSrcCardIndex,dragSrcTaskPath,ci,cur,pos);};
+
+                const pct=calculateProgress(t);
+                const row=document.createElement('div'); row.className='task-row';
+                
+                const drag=document.createElement('span'); drag.className='material-symbols-outlined task-drag-handle'; drag.innerText='drag_indicator'; drag.draggable=true;
+                drag.ondragstart=(e)=>{e.stopPropagation();dragType='task';dragSrcCardIndex=ci;dragSrcTaskPath=cur;e.dataTransfer.effectAllowed='move';nd.classList.add('dragging-task');};
+                drag.ondragend=()=>{nd.classList.remove('dragging-task');document.querySelectorAll('.task-node').forEach(el=>el.classList.remove('drop-above','drop-below','drop-inside'));};
+                
+                const chev=document.createElement('span'); chev.className='material-symbols-outlined collapse-icon'; 
+                if(t.subtasks&&t.subtasks.length>0){ chev.innerText=(q||!t.collapsed)?'expand_more':'chevron_right'; chev.onclick=()=>toggleTaskCollapse(ci,pStr); } else chev.classList.add('collapse-placeholder');
+                
+                const stat=document.createElement('span'); stat.className='material-symbols-outlined task-status-icon status-'+(t.status||'todo'); stat.innerText=getStatusIcon(t.status); stat.onclick=()=>cycleTaskStatus(ci,pStr);
+                
+                const txt=document.createElement('span'); txt.className='task-text '+(t.status==='done'?'task-done':''); txt.contentEditable=true; txt.textContent=t.text; txt.onblur=(e)=>updateTaskText(ci,pStr,e.target.innerText);
+                
+                // RICH NOTE TOGGLE
+                const noteBtn=document.createElement('span'); noteBtn.className='material-symbols-outlined action-btn'+(t.note?' has-note':''); noteBtn.style.fontSize="16px"; noteBtn.innerText='sticky_note_2'; noteBtn.onclick=()=>toggleTaskNote(ci,pStr);
+
+                const date=document.createElement('input'); date.type='date'; date.className='date-input '+(t.status!=='done'?getDateStatus(t.due):''); date.value=t.due||''; date.onchange=(e)=>updateTaskDate(ci,pStr,e.target.value);
+                
+                const add=document.createElement('span'); add.className='material-symbols-outlined action-btn'; add.innerText='playlist_add'; add.onclick=()=>addSubtask(ci,pStr);
+                const del=document.createElement('span'); del.className='material-symbols-outlined action-btn delete'; del.innerText='delete'; del.onclick=()=>deleteTask(ci,pStr);
+                
+                row.append(drag,chev,stat,txt,noteBtn,date,add,del);
+                if(t.subtasks&&t.subtasks.length>0&&pct<100){ const tr=document.createElement('div'); tr.className='node-progress-track'; const fl=document.createElement('div'); fl.className='node-progress-fill'; fl.style.width=pct+'%'; tr.appendChild(fl); row.appendChild(tr); }
+                nd.appendChild(row);
+
+                // RICH NOTE EDITOR
+                if(t.noteOpen){
+                    const noteDiv=document.createElement('div'); noteDiv.className='task-note-block';
+                    noteDiv.innerHTML=`
+                        <div class="rte-toolbar">
+                            <button class="rte-btn" onmousedown="event.preventDefault();formatRichText('bold')">B</button>
+                            <button class="rte-btn" onmousedown="event.preventDefault();formatRichText('italic')">I</button>
+                            <button class="rte-btn" onmousedown="event.preventDefault();formatRichText('insertUnorderedList')">•</button>
+                        </div>
+                        <div class="rte-editor" contenteditable="true" onblur="updateTaskNote(${ci},'${pStr}',this.innerHTML)">${t.note||''}</div>`;
+                    nd.appendChild(noteDiv);
                 }
 
-                e.preventDefault();
-                e.stopPropagation();
-                
-                const rect = nodeDiv.getBoundingClientRect();
-                const y = e.clientY - rect.top;
-                
-                nodeDiv.classList.remove('drop-above', 'drop-below', 'drop-inside');
-                if (y < rect.height * 0.25) nodeDiv.classList.add('drop-above');
-                else if (y > rect.height * 0.75) nodeDiv.classList.add('drop-below');
-                else nodeDiv.classList.add('drop-inside');
-            };
-            
-            nodeDiv.ondragleave = (e) => {
-                if(nodeDiv.contains(e.relatedTarget)) return;
-                nodeDiv.classList.remove('drop-above', 'drop-below', 'drop-inside');
-            };
-            
-            nodeDiv.ondrop = (e) => {
-                if(dragType !== 'task') return;
-                e.stopPropagation();
-                
-                let position = 'inside';
-                if (nodeDiv.classList.contains('drop-above')) position = 'before';
-                else if (nodeDiv.classList.contains('drop-below')) position = 'after';
-                
-                nodeDiv.classList.remove('drop-above', 'drop-below', 'drop-inside');
-                moveTask(dragSrcCardIndex, dragSrcTaskPath, cardIndex, currentPath, position);
-            };
-            
-            const nodePct = calculateProgress(task);
-            
-            const row = document.createElement('div');
-            row.className = 'task-row';
-            
-            const taskHandle = document.createElement('span');
-            taskHandle.className = 'material-symbols-outlined task-drag-handle';
-            taskHandle.innerText = 'drag_indicator';
-            taskHandle.draggable = true;
-            
-            taskHandle.ondragstart = (e) => {
-                e.stopPropagation();
-                dragType = 'task';
-                dragSrcCardIndex = cardIndex;
-                dragSrcTaskPath = currentPath;
-                e.dataTransfer.effectAllowed = 'move';
-                nodeDiv.classList.add('dragging-task');
-            };
-            taskHandle.ondragend = () => {
-                nodeDiv.classList.remove('dragging-task');
-                document.querySelectorAll('.task-node').forEach(el => el.classList.remove('drop-above', 'drop-below', 'drop-inside'));
-            };
-
-            const chevron = document.createElement('span');
-            chevron.className = 'material-symbols-outlined collapse-icon';
-            if (task.subtasks && task.subtasks.length > 0) {
-                const isExpanded = taskSearchQuery ? true : !task.collapsed;
-                chevron.innerText = isExpanded ? 'expand_more' : 'chevron_right';
-                chevron.onclick = () => toggleTaskCollapse(cardIndex, pathStr);
-            } else {
-                chevron.className += ' collapse-placeholder';
-            }
-
-            // STATUS ICON (Tri-State)
-            const statusIcon = document.createElement('span');
-            statusIcon.className = 'material-symbols-outlined task-status-icon status-' + (task.status || 'todo');
-            statusIcon.innerText = getStatusIcon(task.status);
-            statusIcon.onclick = () => cycleTaskStatus(cardIndex, pathStr);
-            
-            const span = document.createElement('span');
-            span.className = 'task-text ' + (task.status==='done' ? 'task-done' : '');
-            span.contentEditable = true;
-            span.textContent = task.text;
-            span.onblur = (e) => updateTaskText(cardIndex, pathStr, e.target.innerText);
-            
-            const dateInput = document.createElement('input');
-            dateInput.type = 'date';
-            const dStatus = getDateStatus(task.due);
-            dateInput.className = 'date-input ' + (task.status!=='done' ? dStatus : '');
-            dateInput.value = task.due || '';
-            dateInput.onchange = (e) => updateTaskDate(cardIndex, pathStr, e.target.value);
-            
-            const addSubBtn = document.createElement('span');
-            addSubBtn.className = 'material-symbols-outlined action-btn';
-            addSubBtn.innerText = 'playlist_add';
-            addSubBtn.title = "Add Subtask";
-            addSubBtn.onclick = () => addSubtask(cardIndex, pathStr);
-
-            const delBtn = document.createElement('span');
-            delBtn.className = 'material-symbols-outlined action-btn delete';
-            delBtn.innerText = 'delete';
-            delBtn.onclick = () => deleteTask(cardIndex, pathStr);
-            
-            row.appendChild(taskHandle); 
-            row.appendChild(chevron);
-            row.appendChild(statusIcon);
-            row.appendChild(span);
-            if(task.subtasks && task.subtasks.length > 0 && nodePct < 100) {
-                 const barTrack = document.createElement('div');
-                 barTrack.className = 'node-progress-track';
-                 const barFill = document.createElement('div');
-                 barFill.className = 'node-progress-fill';
-                 barFill.style.width = nodePct + '%';
-                 barTrack.appendChild(barFill);
-                 row.appendChild(barTrack);
-            }
-            row.appendChild(dateInput);
-            row.appendChild(addSubBtn);
-            row.appendChild(delBtn);
-            nodeDiv.appendChild(row);
-            
-            if(task.subtasks && task.subtasks.length > 0) {
-                const childrenDiv = document.createElement('div');
-                childrenDiv.className = 'task-children';
-                if(task.collapsed && !taskSearchQuery) childrenDiv.classList.add('hidden');
-                childrenDiv.appendChild(renderTaskTree(task.subtasks, currentPath));
-                nodeDiv.appendChild(childrenDiv);
-            }
-            wrapper.appendChild(nodeDiv);
-        });
-        return wrapper;
-    }
-
-    ul.appendChild(renderTaskTree(card.tasks, []));
-    
-    const addRow = document.createElement('div');
-    addRow.className = 'add-task-row';
-    let tplOptions = '';
-    taskTemplates.forEach(tpl => {
-        tplOptions += `<div class="mini-menu-item" onclick="insertTemplateTask(${cardIndex}, '${tpl.id}')">${escapeHtml(tpl.name)}</div>`;
-    });
-    const menuId = `tpl-menu-${cardIndex}`;
-    addRow.innerHTML = `
-      <input type="text" id="add-input-${cardIndex}" class="add-task-input" placeholder="+ Add a task" onkeydown="if(event.key==='Enter') addTask(${cardIndex}, this)">
-      <div style="position:relative;">
-          <button class="template-picker-btn" title="Add from Template" onclick="document.getElementById('${menuId}').style.display = document.getElementById('${menuId}').style.display === 'block' ? 'none' : 'block'">
-             <span class="material-symbols-outlined">post_add</span>
-          </button>
-          <div id="${menuId}" class="mini-menu">
-             <div class="mini-menu-item" style="color:#888; border-bottom:1px solid #eee; cursor:default;">Select Template...</div>
-             ${tplOptions.length ? tplOptions : '<div style="padding:10px; color:#999; font-style:italic;">No templates</div>'}
-             <div class="mini-menu-item" style="border-top:1px solid #eee; color:#2196f3;" onclick="openTemplateManager()">+ Manage Templates</div>
-          </div>
-      </div>
-    `;
-
-    contentDiv.appendChild(ul);
-    contentDiv.appendChild(addRow);
-    cardDiv.appendChild(header);
-    cardDiv.appendChild(contentDiv);
-    container.appendChild(cardDiv);
-  });
-  
-  window.onclick = function(e) {
-      if(!e.target.closest('.template-picker-btn')) {
-          document.querySelectorAll('.mini-menu').forEach(el => el.style.display = 'none');
-      }
-  };
-  localStorage.setItem('simplist-data', JSON.stringify(cards));
-}
-
-// --- List Modal ---
-function openListModal(id) {
-    editingListId = id;
-    const modal = document.getElementById('list-modal');
-    const deleteBtn = document.getElementById('list-delete-btn');
-    if(id) {
-        const card = cards.find(c => c.id === id);
-        document.getElementById('list-modal-title').innerText = "List Settings";
-        document.getElementById('list-name-input').value = card.title;
-        document.getElementById('list-color-input').value = card.color || '#673ab7';
-        deleteBtn.style.display = 'block';
-    } else {
-        document.getElementById('list-modal-title').innerText = "New List";
-        document.getElementById('list-name-input').value = "";
-        document.getElementById('list-color-input').value = "#673ab7";
-        deleteBtn.style.display = 'none';
-    }
-    modal.style.display = 'flex';
-    document.getElementById('list-name-input').focus();
-}
-function closeListModal() {
-    document.getElementById('list-modal').style.display = 'none';
-    editingListId = null;
-}
-function saveList() {
-    const name = document.getElementById('list-name-input').value.trim();
-    const color = document.getElementById('list-color-input').value;
-    if(!name) return alert("Please enter a list name.");
-    if(editingListId) {
-        const card = cards.find(c => c.id === editingListId);
-        if(card) {
-            card.title = name;
-            card.color = color;
+                if(t.subtasks&&t.subtasks.length>0){ const ch=document.createElement('div'); ch.className='task-children'; if(t.collapsed&&!q)ch.classList.add('hidden'); ch.appendChild(rTree(t.subtasks,cur)); nd.appendChild(ch); }
+                wrap.appendChild(nd);
+            });
+            return wrap;
         }
-    } else {
-        cards.push({ id: Date.now().toString(), title: name, color: color, tasks: [] });
-    }
-    renderCards();
-    closeListModal();
+        ul.appendChild(rTree(card.tasks,[]));
+        
+        let tplOpts=''; taskTemplates.forEach(t=>{tplOpts+=`<div class="mini-menu-item" onclick="insertTemplateTask(${ci},'${t.id}')">${escapeHtml(t.name)}</div>`});
+        const addRow=document.createElement('div'); addRow.className='add-task-row';
+        addRow.innerHTML=`<input type="text" id="add-input-${ci}" class="add-task-input" placeholder="+ Task" onkeydown="if(event.key==='Enter')addTask(${ci},this)">
+        <div style="position:relative;"><button class="template-picker-btn" onclick="document.getElementById('tpl-menu-${ci}').style.display=document.getElementById('tpl-menu-${ci}').style.display==='block'?'none':'block'"><span class="material-symbols-outlined" style="font-size:16px">post_add</span></button><div id="tpl-menu-${ci}" class="mini-menu"><div class="mini-menu-item" style="color:#888;cursor:default;">Template...</div>${tplOpts||'<div style="padding:5px;color:#999;">None</div>'}<div class="mini-menu-item" style="color:#2196f3;border-top:1px solid #eee;" onclick="openTemplateManager()">Manage</div></div></div>`;
+        
+        content.appendChild(ul); content.appendChild(addRow); div.appendChild(head); div.appendChild(content); c.appendChild(div);
+    });
 }
-function deleteListHelper() {
-    if(!editingListId) return;
-    if(confirm("Delete this entire list?")) {
-        cards = cards.filter(c => c.id !== editingListId);
-        renderCards();
-        closeListModal();
-    }
-}
+window.onclick=(e)=>{ if(!e.target.closest('.template-picker-btn'))document.querySelectorAll('.mini-menu').forEach(e=>e.style.display='none'); };
 
-// --- Task Functions ---
-function addTask(cardIndex, input) {
-  if(!input.value.trim()) return;
-  cards[cardIndex].tasks.push({ text: input.value, status:'todo', done: false, due:'', subtasks: [], collapsed: false });
-  input.value = '';
-  renderCards();
-  setTimeout(() => {
-    const inputs = document.querySelectorAll('.add-task-input');
-    if(inputs[cardIndex]) inputs[cardIndex].focus();
-  }, 50);
-}
+// --- TASK ACTIONS ---
+function openListModal(id){ editingListId=id; const m=document.getElementById('list-modal'); if(id){const c=cards.find(x=>x.id===id);document.getElementById('list-name-input').value=c.title;document.getElementById('list-color-input').value=c.color;document.getElementById('list-delete-btn').style.display='block';}else{document.getElementById('list-name-input').value='';document.getElementById('list-color-input').value='#673ab7';document.getElementById('list-delete-btn').style.display='none';} m.style.display='flex'; }
+function closeListModal(){ document.getElementById('list-modal').style.display='none'; }
+function saveList(){ const n=document.getElementById('list-name-input').value.trim(), c=document.getElementById('list-color-input').value; if(!n)return alert("Name required"); if(editingListId){const k=cards.find(x=>x.id===editingListId); k.title=n; k.color=c;}else{cards.push({id:Date.now().toString(),title:n,color:c,tasks:[],collapsed:false});} localStorage.setItem('simpList-data',JSON.stringify(cards)); renderCards(); closeListModal(); }
+function deleteListHelper(){ if(confirm("Delete list?")){ cards=cards.filter(x=>x.id!==editingListId); localStorage.setItem('simpList-data',JSON.stringify(cards)); renderCards(); closeListModal(); }}
 
-function cloneTask(task) {
-    return {
-        text: task.text,
-        status: 'todo',
-        done: false,
-        due: '',
-        collapsed: false,
-        subtasks: task.subtasks ? task.subtasks.map(cloneTask) : []
-    };
-}
+function addTask(i,inp){ if(!inp.value.trim())return; cards[i].tasks.push({text:inp.value,status:'todo',done:false,due:'',note:'',subtasks:[],collapsed:false}); inp.value=''; renderCards(); setTimeout(()=>{const x=document.querySelectorAll('.add-task-input')[i];if(x)x.focus();},50); localStorage.setItem('simpList-data',JSON.stringify(cards)); }
+function cloneTask(t){ return {text:t.text,status:'todo',done:false,due:'',note:t.note||'',collapsed:false,subtasks:t.subtasks?t.subtasks.map(cloneTask):[]}; }
+function insertTemplateTask(i,tid){ const t=taskTemplates.find(x=>x.id===tid), inp=document.getElementById(`add-input-${i}`), txt=inp.value.trim()||t.name; cards[i].tasks.push({text:txt,status:'todo',done:false,due:'',note:t.note||'',collapsed:false,subtasks:t.subtasks?t.subtasks.map(cloneTask):[]}); inp.value=''; localStorage.setItem('simpList-data',JSON.stringify(cards)); renderCards(); }
 
-function insertTemplateTask(cardIndex, tplId) {
-    const tpl = taskTemplates.find(t => t.id === tplId);
-    if (!tpl) return;
-    const input = document.getElementById(`add-input-${cardIndex}`);
-    const taskName = input.value.trim() || tpl.name;
-    const newTask = {
-        text: taskName,
-        status: 'todo',
-        done: false,
-        due: '',
-        collapsed: false,
-        subtasks: tpl.subtasks ? tpl.subtasks.map(cloneTask) : []
-    };
-    cards[cardIndex].tasks.push(newTask);
-    input.value = ''; 
-    renderCards();
-}
+function toggleTaskCollapse(i,p){ const t=getTaskByPath(i,p.split(',').map(Number)); t.collapsed=!t.collapsed; localStorage.setItem('simpList-data',JSON.stringify(cards)); renderCards(); }
+function toggleTaskNote(i,p){ const t=getTaskByPath(i,p.split(',').map(Number)); t.noteOpen=!t.noteOpen; localStorage.setItem('simpList-data',JSON.stringify(cards)); renderCards(); }
+function updateTaskNote(i,p,v){ const t=getTaskByPath(i,p.split(',').map(Number)); t.note=v; localStorage.setItem('simpList-data',JSON.stringify(cards)); renderCards(); } // Re-render to update icon color
+function addSubtask(i,p){ const t=getTaskByPath(i,p.split(',').map(Number)); if(!t.subtasks)t.subtasks=[]; t.subtasks.push({text:"New Step",status:'todo',done:false,due:'',note:'',collapsed:false,subtasks:[]}); t.collapsed=false; localStorage.setItem('simpList-data',JSON.stringify(cards)); renderCards(); }
+function deleteTask(i,p){ const path=p.split(',').map(Number), idx=path.pop(); if(path.length===0)cards[i].tasks.splice(idx,1); else getTaskByPath(i,path).subtasks.splice(idx,1); localStorage.setItem('simpList-data',JSON.stringify(cards)); renderCards(); }
+function updateTaskText(i,p,v){ getTaskByPath(i,p.split(',').map(Number)).text=v; localStorage.setItem('simpList-data',JSON.stringify(cards)); }
+function updateTaskDate(i,p,v){ getTaskByPath(i,p.split(',').map(Number)).due=v; renderCards(); localStorage.setItem('simpList-data',JSON.stringify(cards)); }
 
-function toggleTask(cardIndex, pathStr) {
-    // Legacy checkbox handler if any
-    cycleTaskStatus(cardIndex, pathStr);
-}
-function updateTaskText(cardIndex, pathStr, val) {
-    const path = pathStr.split(',').map(Number);
-    const task = getTaskByPath(cardIndex, path);
-    task.text = val;
-    localStorage.setItem('simplist-data', JSON.stringify(cards));
-}
-function updateTaskDate(cardIndex, pathStr, val) {
-    const path = pathStr.split(',').map(Number);
-    const task = getTaskByPath(cardIndex, path);
-    task.due = val;
-    renderCards(); 
-}
-function toggleTaskCollapse(cardIndex, pathStr) {
-    const path = pathStr.split(',').map(Number);
-    const task = getTaskByPath(cardIndex, path);
-    task.collapsed = !task.collapsed;
-    localStorage.setItem('simplist-data', JSON.stringify(cards)); // Save state
-    renderCards();
-}
-function addSubtask(cardIndex, pathStr) {
-    const path = pathStr.split(',').map(Number);
-    const task = getTaskByPath(cardIndex, path);
-    if(!task.subtasks) task.subtasks = [];
-    task.subtasks.push({ text: "New Step", status:'todo', done: false, due: '', collapsed: false, subtasks: [] });
-    task.collapsed = false; 
-    renderCards();
-}
-function deleteTask(cardIndex, pathStr) {
-    const path = pathStr.split(',').map(Number);
-    const idx = path.pop();
-    if(path.length === 0) {
-        cards[cardIndex].tasks.splice(idx, 1);
-    } else {
-        const parent = getTaskByPath(cardIndex, path);
-        parent.subtasks.splice(idx, 1);
-    }
-    renderCards();
-}
+// --- EXPORT ---
+function exportData(){ const d={folders:buttonFolders,customTags:customTags,cards:cards,templates:taskTemplates}; const b=new Blob([JSON.stringify(d)],{type:'application/json'}); const a=document.createElement('a'); a.href=URL.createObjectURL(b); a.download='simplist_backup.json'; a.click(); }
+document.getElementById('file-upload').addEventListener('change',function(e){ const f=e.target.files[0]; if(!f)return; const r=new FileReader(); r.onload=function(ev){ try{const d=JSON.parse(ev.target.result); if(d.folders)buttonFolders=d.folders; if(d.cards)cards=d.cards; if(d.customTags)customTags=d.customTags; if(d.templates)taskTemplates=d.templates; saveButtonFolders(); localStorage.setItem('customTags',JSON.stringify(customTags)); localStorage.setItem('simpList-data',JSON.stringify(cards)); localStorage.setItem('simpList-templates',JSON.stringify(taskTemplates)); renderCards(); alert('Import successful!');}catch(err){alert('Error');}}; r.readAsText(f); });
 
-/**
- * --- PART 7: IMPORT / EXPORT ---
- */
-function exportData() {
-  const data = {
-    folders: buttonFolders,
-    customTags: customTags,
-    cards: cards,
-    templates: taskTemplates
-  };
-  const blob = new Blob([JSON.stringify(data, null, 2)], {type : 'application/json'});
-  const url = URL.createObjectURL(blob);
-  const a = document.createElement('a');
-  a.href = url;
-  a.download = 'simplist_complete_backup.json';
-  a.click();
-}
-
-document.getElementById('file-upload').addEventListener('change', function(e) {
-  const file = e.target.files[0];
-  if (!file) return;
-  const reader = new FileReader();
-  reader.onload = function(e) {
-    try {
-      const data = JSON.parse(e.target.result);
-      if(data.folders) buttonFolders = data.folders;
-      if(data.cards) cards = data.cards;
-      if(data.customTags) customTags = data.customTags;
-      if(data.templates) taskTemplates = data.templates;
-      
-      saveButtonFolders();
-      localStorage.setItem('customTags', JSON.stringify(customTags));
-      localStorage.setItem('simplist-templates', JSON.stringify(taskTemplates));
-      renderCards();
-      alert('Import successful!');
-    } catch(err) {
-      alert('Error parsing file.');
-    }
-  };
-  reader.readAsText(file);
-});
-
-// Init
-renderButtonFolders();
-renderCards();
-
+renderButtonFolders(); renderCards();
 </script>
 </body>
 </html>
